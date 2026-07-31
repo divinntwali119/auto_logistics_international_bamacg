@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <title>CCTA - Centre de Contrôle Technique des Automobiles</title>
-    <meta name="description" content="Centre de Contrôle Technique des Automobiles. Sécurité, expertise et technologie au service de votre véhicule." />
+    <meta name="description" content="Centre de Contrôle Technique des Automobiles. Sécurité, expertise et technologie au service de votre véhicule.">
     <meta name="theme-color" content="#0A3D62" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
     <style>
+        /* ========== STYLES (garde ton style existant) ========== */
         :root {
             --primary-color: #0A3D62;
             --primary-dark: #062842;
@@ -75,12 +76,7 @@
             transition: background-color 0.5s ease, color 0.5s ease;
             -webkit-font-smoothing: antialiased;
         }
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
+        h1, h2, h3, h4, h5, h6 {
             font-family: var(--font-heading);
             font-weight: 700;
         }
@@ -150,8 +146,7 @@
             animation: logoPulse 1.5s ease-in-out infinite;
         }
         @keyframes logoPulse {
-            0%,
-            100% {
+            0%, 100% {
                 transform: translate(-50%, -50%) scale(1);
                 box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.2);
             }
@@ -199,8 +194,8 @@
         }
         .preloader-text {
             font-family: var(--font-heading);
-            font-weight: 400;
-            font-size: 1.5rem;
+            font-weight: 900;
+            font-size: 2.5rem;
             color: var(--text-light);
             letter-spacing: 6px;
             margin-bottom: 5px;
@@ -237,19 +232,11 @@
             background: var(--text-light);
             animation: dotPulse 1.4s infinite ease-in-out both;
         }
-        .preloader-dots span:nth-child(1) {
-            animation-delay: -0.32s;
-        }
-        .preloader-dots span:nth-child(2) {
-            animation-delay: -0.16s;
-        }
-        .preloader-dots span:nth-child(3) {
-            animation-delay: 0s;
-        }
+        .preloader-dots span:nth-child(1) { animation-delay: -0.32s; }
+        .preloader-dots span:nth-child(2) { animation-delay: -0.16s; }
+        .preloader-dots span:nth-child(3) { animation-delay: 0s; }
         @keyframes dotPulse {
-            0%,
-            80%,
-            100% {
+            0%, 80%, 100% {
                 transform: scale(0.4);
                 opacity: 0.3;
             }
@@ -277,12 +264,8 @@
             transition: width 0.3s ease;
         }
         @keyframes progressGradient {
-            0% {
-                background-position: 0% 0%;
-            }
-            100% {
-                background-position: 200% 0%;
-            }
+            0% { background-position: 0% 0%; }
+            100% { background-position: 200% 0%; }
         }
 
         /* PROGRESS BAR */
@@ -327,18 +310,10 @@
         .theme-toggle-btn .moon-icon {
             transition: var(--transition-smooth);
         }
-        [data-theme="dark"] .theme-toggle-btn .moon-icon {
-            display: none;
-        }
-        [data-theme="dark"] .theme-toggle-btn .sun-icon {
-            display: block;
-        }
-        [data-theme="light"] .theme-toggle-btn .moon-icon {
-            display: block;
-        }
-        [data-theme="light"] .theme-toggle-btn .sun-icon {
-            display: none;
-        }
+        [data-theme="dark"] .theme-toggle-btn .moon-icon { display: none; }
+        [data-theme="dark"] .theme-toggle-btn .sun-icon { display: block; }
+        [data-theme="light"] .theme-toggle-btn .moon-icon { display: block; }
+        [data-theme="light"] .theme-toggle-btn .sun-icon { display: none; }
 
         /* BACK TO TOP */
         #backToTop {
@@ -370,7 +345,7 @@
             transform: translateY(-4px) scale(1.05);
         }
 
-        /* NAVBAR - version mobile optimisée */
+        /* NAVBAR */
         .navbar-custom {
             background: rgba(10, 61, 98, 0.97);
             backdrop-filter: blur(20px);
@@ -497,7 +472,7 @@
             }
         }
 
-        /* HERO SWIPER */
+        /* HERO */
         .hero-section {
             position: relative;
             min-height: 100vh;
@@ -763,15 +738,8 @@
             animation: linePulse 2s infinite;
         }
         @keyframes linePulse {
-            0%,
-            100% {
-                width: 16px;
-                opacity: 1;
-            }
-            50% {
-                width: 30px;
-                opacity: 0.6;
-            }
+            0%, 100% { width: 16px; opacity: 1; }
+            50% { width: 30px; opacity: 0.6; }
         }
 
         /* BUTTONS */
@@ -941,13 +909,8 @@
             z-index: 2;
         }
         @keyframes floatBadge {
-            0%,
-            100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
         .about-image-decoration .decoration-circle {
             position: absolute;
@@ -960,12 +923,8 @@
             animation: spinCircle 20s linear infinite;
         }
         @keyframes spinCircle {
-            0% {
-                transform: rotate(0deg);
-            }
-            100% {
-                transform: rotate(360deg);
-            }
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
         .about-image-decoration .decoration-dots {
             position: absolute;
@@ -1435,7 +1394,7 @@
             color: var(--primary-color);
         }
 
-        /* TARIFS - SECTION PREMIUM */
+        /* TARIFS */
         .pricing-card {
             background: var(--card-bg);
             border-radius: var(--border-radius);
@@ -1879,377 +1838,116 @@
 
         /* RESPONSIVE */
         @media (max-width: 991px) {
-            .hero-slider .slide-title {
-                font-size: 2.6rem;
-            }
-            .hero-slider .slide-text {
-                font-size: 0.95rem;
-                max-width: 90%;
-            }
+            .hero-slider .slide-title { font-size: 2.6rem; }
+            .hero-slider .slide-text { font-size: 0.95rem; max-width: 90%; }
             .hero-slider .swiper-button-next,
-            .hero-slider .swiper-button-prev {
-                display: none;
-            }
-            .section-title h2 {
-                font-size: 1.8rem;
-            }
-            .hero-stats .stat-number {
-                font-size: 1.2rem;
-            }
-            .hero-stats .stat-label {
-                font-size: 0.5rem;
-            }
-            .global-rating {
-                padding: 14px 18px;
-                gap: 10px;
-            }
-            .global-rating-score {
-                font-size: 1.3rem;
-            }
-            .testimonial-card {
-                padding: 18px 16px;
-            }
-            .testimonial-avatar {
-                width: 42px;
-                height: 42px;
-            }
+            .hero-slider .swiper-button-prev { display: none; }
+            .section-title h2 { font-size: 1.8rem; }
+            .hero-stats .stat-number { font-size: 1.2rem; }
+            .hero-stats .stat-label { font-size: 0.5rem; }
+            .global-rating { padding: 14px 18px; gap: 10px; }
+            .global-rating-score { font-size: 1.3rem; }
+            .testimonial-card { padding: 18px 16px; }
+            .testimonial-avatar { width: 42px; height: 42px; }
             .testimonials-slider .swiper-button-next,
-            .testimonials-slider .swiper-button-prev {
-                display: none;
-            }
-            .team-stats {
-                gap: 16px;
-                padding: 16px 20px;
-            }
-            .team-stat-number {
-                font-size: 1.4rem;
-            }
-            .team-cta {
-                padding: 24px 20px;
-            }
-            .team-cta-content {
-                flex-direction: column;
-                text-align: center;
-            }
-            .pricing-card.popular {
-                transform: scale(1);
-            }
-            .pricing-card.popular:hover {
-                transform: scale(1) translateY(-10px);
-            }
+            .testimonials-slider .swiper-button-prev { display: none; }
+            .team-stats { gap: 16px; padding: 16px 20px; }
+            .team-stat-number { font-size: 1.4rem; }
+            .team-cta { padding: 24px 20px; }
+            .team-cta-content { flex-direction: column; text-align: center; }
+            .pricing-card.popular { transform: scale(1); }
+            .pricing-card.popular:hover { transform: scale(1) translateY(-10px); }
         }
         @media (max-width: 767px) {
-            .hero-slider .slide-title {
-                font-size: 2rem;
-                padding: 0 10px;
-            }
-            .hero-slider .slide-text {
-                font-size: 0.85rem;
-                max-width: 100%;
-                padding: 0 12px;
-            }
-            .hero-slider .slide-badge {
-                font-size: 0.6rem;
-                padding: 4px 16px;
-                margin-bottom: 12px;
-            }
-            .hero-slider .slide-btn .btn {
-                font-size: 0.78rem;
-                padding: 8px 18px;
-            }
-            .hero-slider .swiper-pagination {
-                bottom: 75px;
-            }
-            .hero-stats-wrapper {
-                padding: 0 8px;
-                bottom: 6px;
-            }
-            .hero-stats {
-                padding: 8px 12px;
-                border-radius: 12px;
-                max-width: 100%;
-            }
-            .hero-stats .stat-number {
-                font-size: 1rem;
-            }
-            .hero-stats .stat-label {
-                font-size: 0.45rem;
-                letter-spacing: 0.5px;
-            }
-            .hero-stats .stat-divider {
-                height: 22px;
-            }
-            .section-padding {
-                padding: 45px 0;
-            }
-            .section-title {
-                margin-bottom: 28px;
-            }
-            .section-title h2 {
-                font-size: 1.4rem;
-            }
-            .section-title .subtitle {
-                font-size: 0.85rem;
-                padding: 0 10px;
-            }
-            .feature-card {
-                padding: 20px 14px;
-            }
-            .feature-icon {
-                width: 54px;
-                height: 54px;
-                font-size: 1.3rem;
-            }
-            .feature-card h4 {
-                font-size: 0.85rem;
-            }
-            .feature-card p {
-                font-size: 0.78rem;
-            }
-            .service-img-wrapper {
-                height: 150px;
-            }
-            .service-content {
-                padding: 16px 14px 14px;
-            }
-            .service-content h4 {
-                font-size: 0.85rem;
-            }
-            .service-content p {
-                font-size: 0.78rem;
-            }
-            .service-badge-icon {
-                width: 36px;
-                height: 36px;
-                font-size: 0.8rem;
-                bottom: -16px;
-                right: 12px;
-            }
-            .about-image-wrapper img {
-                min-height: 200px;
-            }
-            .about-image-wrapper .badge-float {
-                font-size: 0.7rem;
-                padding: 8px 14px;
-                bottom: 12px;
-                right: 12px;
-            }
-            .about-mini-stats {
-                flex-wrap: wrap;
-                gap: 6px;
-            }
-            .about-mini-stats .mini-stat {
-                flex: 1 1 calc(33.33% - 10px);
-                min-width: 70px;
-                padding: 6px 8px;
-            }
-            .about-mini-stats .mini-stat-number {
-                font-size: 0.85rem;
-            }
-            .about-mini-stats .mini-stat-label {
-                font-size: 0.45rem;
-            }
-            .about-header .about-title {
-                font-size: 1.3rem;
-            }
-            .about-description {
-                font-size: 0.88rem;
-            }
-            .about-card {
-                padding: 12px 14px;
-            }
-            .about-card-icon {
-                width: 34px;
-                height: 34px;
-                font-size: 0.85rem;
-            }
-            .about-card-content h5 {
-                font-size: 0.82rem;
-            }
-            .about-card-content p {
-                font-size: 0.75rem;
-            }
-            .about-certifications .cert-badge {
-                font-size: 0.65rem;
-                padding: 4px 10px;
-            }
-            .team-stats {
-                gap: 8px;
-                padding: 12px;
-                flex-wrap: wrap;
-            }
-            .team-stat-item {
-                flex: 1 1 calc(50% - 10px);
-                min-width: 70px;
-            }
-            .team-stat-number {
-                font-size: 1.1rem;
-            }
-            .team-stat-label {
-                font-size: 0.55rem;
-            }
-            .team-stat-divider {
-                display: none;
-            }
-            .team-card-image {
-                height: 180px;
-            }
-            .team-card-content h4 {
-                font-size: 0.9rem;
-            }
-            .team-cta {
-                padding: 20px 16px;
-            }
-            .team-cta-text h3 {
-                font-size: 1.1rem;
-            }
-            .team-cta-text p {
-                font-size: 0.8rem;
-            }
-            .pricing-card {
-                padding: 24px 18px 20px;
-            }
-            .pricing-card .pricing-price {
-                font-size: 2.2rem;
-            }
-            .pricing-card .pricing-features li {
-                font-size: 0.78rem;
-                padding: 6px 0;
-            }
-            .global-rating {
-                flex-direction: column;
-                text-align: center;
-                padding: 14px;
-            }
-            .global-rating-stars {
-                font-size: 0.9rem;
-            }
-            .global-rating-score {
-                font-size: 1.2rem;
-            }
-            .global-rating-text {
-                font-size: 0.75rem;
-            }
-            .testimonial-header {
-                flex-wrap: wrap;
-            }
-            .testimonial-rating {
-                margin-left: auto;
-            }
-            .testimonial-body p {
-                font-size: 0.82rem;
-            }
-            .testimonial-footer {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            .gallery-item {
-                height: 150px;
-            }
-            .contact-info-card {
-                padding: 18px 14px;
-            }
-            .contact-info-card .info-icon {
-                width: 36px;
-                height: 36px;
-                font-size: 0.85rem;
-            }
-            .contact-info-card h6 {
-                font-size: 0.78rem;
-            }
-            .contact-info-card p {
-                font-size: 0.78rem;
-            }
-            .footer {
-                padding-top: 36px;
-            }
-            .footer-widget {
-                margin-bottom: 18px;
-            }
-            .theme-toggle-btn {
-                width: 40px;
-                height: 40px;
-                font-size: 0.9rem;
-                right: 10px;
-                bottom: 70px;
-            }
-            #backToTop {
-                width: 40px;
-                height: 40px;
-                font-size: 0.8rem;
-                right: 10px;
-            }
+            .hero-slider .slide-title { font-size: 2rem; padding: 0 10px; }
+            .hero-slider .slide-text { font-size: 0.85rem; max-width: 100%; padding: 0 12px; }
+            .hero-slider .slide-badge { font-size: 0.6rem; padding: 4px 16px; margin-bottom: 12px; }
+            .hero-slider .slide-btn .btn { font-size: 0.78rem; padding: 8px 18px; }
+            .hero-slider .swiper-pagination { bottom: 75px; }
+            .hero-stats-wrapper { padding: 0 8px; bottom: 6px; }
+            .hero-stats { padding: 8px 12px; border-radius: 12px; max-width: 100%; }
+            .hero-stats .stat-number { font-size: 1rem; }
+            .hero-stats .stat-label { font-size: 0.45rem; letter-spacing: 0.5px; }
+            .hero-stats .stat-divider { height: 22px; }
+            .section-padding { padding: 45px 0; }
+            .section-title { margin-bottom: 28px; }
+            .section-title h2 { font-size: 1.4rem; }
+            .section-title .subtitle { font-size: 0.85rem; padding: 0 10px; }
+            .feature-card { padding: 20px 14px; }
+            .feature-icon { width: 54px; height: 54px; font-size: 1.3rem; }
+            .feature-card h4 { font-size: 0.85rem; }
+            .feature-card p { font-size: 0.78rem; }
+            .service-img-wrapper { height: 150px; }
+            .service-content { padding: 16px 14px 14px; }
+            .service-content h4 { font-size: 0.85rem; }
+            .service-content p { font-size: 0.78rem; }
+            .service-badge-icon { width: 36px; height: 36px; font-size: 0.8rem; bottom: -16px; right: 12px; }
+            .about-image-wrapper img { min-height: 200px; }
+            .about-image-wrapper .badge-float { font-size: 0.7rem; padding: 8px 14px; bottom: 12px; right: 12px; }
+            .about-mini-stats { flex-wrap: wrap; gap: 6px; }
+            .about-mini-stats .mini-stat { flex: 1 1 calc(33.33% - 10px); min-width: 70px; padding: 6px 8px; }
+            .about-mini-stats .mini-stat-number { font-size: 0.85rem; }
+            .about-mini-stats .mini-stat-label { font-size: 0.45rem; }
+            .about-header .about-title { font-size: 1.3rem; }
+            .about-description { font-size: 0.88rem; }
+            .about-card { padding: 12px 14px; }
+            .about-card-icon { width: 34px; height: 34px; font-size: 0.85rem; }
+            .about-card-content h5 { font-size: 0.82rem; }
+            .about-card-content p { font-size: 0.75rem; }
+            .about-certifications .cert-badge { font-size: 0.65rem; padding: 4px 10px; }
+            .team-stats { gap: 8px; padding: 12px; flex-wrap: wrap; }
+            .team-stat-item { flex: 1 1 calc(50% - 10px); min-width: 70px; }
+            .team-stat-number { font-size: 1.1rem; }
+            .team-stat-label { font-size: 0.55rem; }
+            .team-stat-divider { display: none; }
+            .team-card-image { height: 180px; }
+            .team-card-content h4 { font-size: 0.9rem; }
+            .team-cta { padding: 20px 16px; }
+            .team-cta-text h3 { font-size: 1.1rem; }
+            .team-cta-text p { font-size: 0.8rem; }
+            .pricing-card { padding: 24px 18px 20px; }
+            .pricing-card .pricing-price { font-size: 2.2rem; }
+            .pricing-card .pricing-features li { font-size: 0.78rem; padding: 6px 0; }
+            .global-rating { flex-direction: column; text-align: center; padding: 14px; }
+            .global-rating-stars { font-size: 0.9rem; }
+            .global-rating-score { font-size: 1.2rem; }
+            .global-rating-text { font-size: 0.75rem; }
+            .testimonial-header { flex-wrap: wrap; }
+            .testimonial-rating { margin-left: auto; }
+            .testimonial-body p { font-size: 0.82rem; }
+            .testimonial-footer { flex-direction: column; align-items: flex-start; }
+            .gallery-item { height: 150px; }
+            .contact-info-card { padding: 18px 14px; }
+            .contact-info-card .info-icon { width: 36px; height: 36px; font-size: 0.85rem; }
+            .contact-info-card h6 { font-size: 0.78rem; }
+            .contact-info-card p { font-size: 0.78rem; }
+            .footer { padding-top: 36px; }
+            .footer-widget { margin-bottom: 18px; }
+            .theme-toggle-btn { width: 40px; height: 40px; font-size: 0.9rem; right: 10px; bottom: 70px; }
+            #backToTop { width: 40px; height: 40px; font-size: 0.8rem; right: 10px; }
         }
         @media (max-width: 400px) {
-            .hero-slider .slide-title {
-                font-size: 1.6rem;
-                padding: 0 5px;
-            }
-            .hero-slider .slide-text {
-                font-size: 0.75rem;
-                padding: 0 8px;
-            }
-            .hero-slider .slide-badge {
-                font-size: 0.5rem;
-                padding: 3px 12px;
-            }
-            .hero-slider .slide-btn .btn {
-                font-size: 0.7rem;
-                padding: 6px 14px;
-            }
-            .hero-stats .stat-number {
-                font-size: 0.85rem;
-            }
-            .hero-stats .stat-label {
-                font-size: 0.4rem;
-            }
-            .section-title h2 {
-                font-size: 1.2rem;
-            }
+            .hero-slider .slide-title { font-size: 1.6rem; padding: 0 5px; }
+            .hero-slider .slide-text { font-size: 0.75rem; padding: 0 8px; }
+            .hero-slider .slide-badge { font-size: 0.5rem; padding: 3px 12px; }
+            .hero-slider .slide-btn .btn { font-size: 0.7rem; padding: 6px 14px; }
+            .hero-stats .stat-number { font-size: 0.85rem; }
+            .hero-stats .stat-label { font-size: 0.4rem; }
+            .section-title h2 { font-size: 1.2rem; }
             .btn-ccta-primary,
-            .btn-ccta-outline {
-                font-size: 0.72rem;
-                padding: 6px 14px;
-            }
-            .about-header .about-title {
-                font-size: 1.1rem;
-            }
-            .about-mini-stats .mini-stat {
-                flex: 1 1 calc(50% - 5px);
-                padding: 4px 6px;
-            }
-            .about-mini-stats .mini-stat:last-child {
-                flex: 1 1 100%;
-            }
-            .team-stat-item {
-                flex: 1 1 100%;
-            }
-            .team-card-image {
-                height: 150px;
-            }
-            .pricing-card .pricing-price {
-                font-size: 1.8rem;
-            }
-            .testimonial-avatar {
-                width: 36px;
-                height: 36px;
-            }
-            .testimonial-user h5 {
-                font-size: 0.8rem;
-            }
-            .testimonial-rating {
-                font-size: 0.7rem;
-            }
-            .testimonial-body p {
-                font-size: 0.78rem;
-            }
-            .global-rating-badge {
-                font-size: 0.6rem;
-                padding: 2px 10px;
-            }
-            .gallery-item {
-                height: 120px;
-            }
+            .btn-ccta-outline { font-size: 0.72rem; padding: 6px 14px; }
+            .about-header .about-title { font-size: 1.1rem; }
+            .about-mini-stats .mini-stat { flex: 1 1 calc(50% - 5px); padding: 4px 6px; }
+            .about-mini-stats .mini-stat:last-child { flex: 1 1 100%; }
+            .team-stat-item { flex: 1 1 100%; }
+            .team-card-image { height: 150px; }
+            .pricing-card .pricing-price { font-size: 1.8rem; }
+            .testimonial-avatar { width: 36px; height: 36px; }
+            .testimonial-user h5 { font-size: 0.8rem; }
+            .testimonial-rating { font-size: 0.7rem; }
+            .testimonial-body p { font-size: 0.78rem; }
+            .global-rating-badge { font-size: 0.6rem; padding: 2px 10px; }
+            .gallery-item { height: 120px; }
         }
     </style>
 </head>
@@ -2457,7 +2155,7 @@
             <div class="row align-items-center g-5">
                 <div class="col-lg-6" data-aos="fade-right" data-aos-duration="800">
                     <div class="about-image-wrapper">
-                        <img src="/home/divin/CCTA/images/20260728_141057.jpg" alt="Inspection CCTA" loading="lazy" />
+                        <img src="images/20260728_141057.jpg" alt="Inspection CCTA" loading="lazy" />
                         <div class="badge-float"><i class="fa-solid fa-star me-1"></i>15+ Ans d'Excellence</div>
                         <div class="about-image-decoration">
                             <div class="decoration-circle"></div>
@@ -2642,7 +2340,7 @@
                 <div class="col-12 col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="150">
                     <div class="team-card">
                         <div class="team-card-image">
-                            <img src="/home/divin/CCTA/images/552676407_122271216524034821_6934299949075729428_n.jpg" alt="Directeur" loading="lazy" />
+                            <img src="images/552676407_122271216524034821_6934299949075729428_n.jpg" alt="Directeur" loading="lazy" />
                             <div class="team-card-overlay">
                                 <div class="team-social">
                                     <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
@@ -2670,7 +2368,7 @@
                 <div class="col-12 col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="250">
                     <div class="team-card">
                         <div class="team-card-image">
-                            <img src="/home/divin/CCTA/images/552676407_122271216524034821_6934299949075729428_n.jpg" alt="Contrôleur" loading="lazy" />
+                            <img src="images/552676407_122271216524034821_6934299949075729428_n.jpg" alt="Contrôleur" loading="lazy" />
                             <div class="team-card-overlay">
                                 <div class="team-social">
                                     <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
@@ -2698,7 +2396,7 @@
                 <div class="col-12 col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="350">
                     <div class="team-card">
                         <div class="team-card-image">
-                            <img src="/home/divin/CCTA/images/552676407_122271216524034821_6934299949075729428_n.jpg" alt="Ingénieur" loading="lazy" />
+                            <img src="images/552676407_122271216524034821_6934299949075729428_n.jpg" alt="Ingénieur" loading="lazy" />
                             <div class="team-card-overlay">
                                 <div class="team-social">
                                     <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
@@ -2726,7 +2424,7 @@
                 <div class="col-12 col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="450">
                     <div class="team-card">
                         <div class="team-card-image">
-                            <img src="/home/divin/CCTA/images/552676407_122271216524034821_6934299949075729428_n.jpg" alt="Spécialiste" loading="lazy" />
+                            <img src="images/552676407_122271216524034821_6934299949075729428_n.jpg" alt="Spécialiste" loading="lazy" />
                             <div class="team-card-overlay">
                                 <div class="team-social">
                                     <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
@@ -2764,7 +2462,7 @@
         </div>
     </section>
 
-    <!-- TARIFS - NOUVEAU BLOC -->
+    <!-- TARIFS -->
     <section id="tarifs" class="section-padding section-bg-white">
         <div class="container">
             <div class="section-title" data-aos="fade-up">
@@ -2793,7 +2491,7 @@
                     </div>
                 </div>
 
-                <!-- Offre Premium (populaire) -->
+                <!-- Offre Premium -->
                 <div class="col-12 col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
                     <div class="pricing-card popular">
                         <span class="popular-badge"><i class="fa-solid fa-star me-1"></i> Populaire</span>
@@ -2874,7 +2572,7 @@
                     <div class="swiper-slide">
                         <div class="testimonial-card">
                             <div class="testimonial-header">
-                                <div class="testimonial-avatar"><img src="/home/divin/CCTA/images/552676407_122271216524034821_6934299949075729428_n.jpg" alt="Jean" /></div>
+                                <div class="testimonial-avatar"><img src="images/552676407_122271216524034821_6934299949075729428_n.jpg" alt="Jean" /></div>
                                 <div class="testimonial-user"><h5>Jean Dupont</h5><span class="testimonial-vehicle">Toyota RAV4 - 2022</span></div>
                                 <div class="testimonial-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
                             </div>
@@ -2885,7 +2583,7 @@
                     <div class="swiper-slide">
                         <div class="testimonial-card">
                             <div class="testimonial-header">
-                                <div class="testimonial-avatar"><img src="/home/divin/CCTA/images/552676407_122271216524034821_6934299949075729428_n.jpg" alt="Marie" /></div>
+                                <div class="testimonial-avatar"><img src="images/552676407_122271216524034821_6934299949075729428_n.jpg" alt="Marie" /></div>
                                 <div class="testimonial-user"><h5>Marie Lambert</h5><span class="testimonial-vehicle">Peugeot 208 - 2023</span></div>
                                 <div class="testimonial-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
                             </div>
@@ -2896,7 +2594,7 @@
                     <div class="swiper-slide">
                         <div class="testimonial-card">
                             <div class="testimonial-header">
-                                <div class="testimonial-avatar"><img src="/home/divin/CCTA/images/552676407_122271216524034821_6934299949075729428_n.jpg" alt="Pierre" /></div>
+                                <div class="testimonial-avatar"><img src="images/552676407_122271216524034821_6934299949075729428_n.jpg" alt="Pierre" /></div>
                                 <div class="testimonial-user"><h5>Pierre Martin</h5><span class="testimonial-vehicle">Mercedes Sprinter - 2021</span></div>
                                 <div class="testimonial-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
                             </div>
@@ -2907,7 +2605,7 @@
                     <div class="swiper-slide">
                         <div class="testimonial-card">
                             <div class="testimonial-header">
-                                <div class="testimonial-avatar"><img src="/home/divin/CCTA/images/552676407_122271216524034821_6934299949075729428_n.jpg" alt="Sophie" /></div>
+                                <div class="testimonial-avatar"><img src="images/552676407_122271216524034821_6934299949075729428_n.jpg" alt="Sophie" /></div>
                                 <div class="testimonial-user"><h5>Sophie Bernard</h5><span class="testimonial-vehicle">Tesla Model 3 - 2024</span></div>
                                 <div class="testimonial-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i></div>
                             </div>
@@ -2929,7 +2627,7 @@
                     <div class="swiper-slide">
                         <div class="testimonial-card">
                             <div class="testimonial-header">
-                                <div class="testimonial-avatar"><img src="/home/divin/CCTA/images/552676407_122271216524034821_6934299949075729428_n.jpg" alt="Isabelle" /></div>
+                                <div class="testimonial-avatar"><img src="images/552676407_122271216524034821_6934299949075729428_n.jpg" alt="Isabelle" /></div>
                                 <div class="testimonial-user"><h5>Isabelle Moreau</h5><span class="testimonial-vehicle">Renault Clio - 2023</span></div>
                                 <div class="testimonial-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
                             </div>
@@ -2956,13 +2654,13 @@
             <div class="row g-3">
                 <div class="col-6 col-md-4" data-aos="zoom-in" data-aos-delay="100">
                     <div class="gallery-item">
-                        <img src="/home/divin/CCTA/images/20260728_141057.jpg" alt="Atelier" loading="lazy" />
+                        <img src="images/20260728_141057.jpg" alt="Atelier" loading="lazy" />
                         <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
                     </div>
                 </div>
                 <div class="col-6 col-md-4" data-aos="zoom-in" data-aos-delay="200">
                     <div class="gallery-item">
-                        <img src="/home/divin/CCTA/images/20260728_141120.jpg" alt="Ligne d'inspection" loading="lazy" />
+                        <img src="images/20260728_141120.jpg" alt="Ligne d'inspection" loading="lazy" />
                         <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
                     </div>
                 </div>
@@ -2974,19 +2672,19 @@
                 </div>
                 <div class="col-6 col-md-4" data-aos="zoom-in" data-aos-delay="100">
                     <div class="gallery-item">
-                        <img src="/home/divin/CCTA/images/20260728_141013.jpg" alt="Infrastructures" loading="lazy" />
+                        <img src="images/20260728_141013.jpg" alt="Infrastructures" loading="lazy" />
                         <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
                     </div>
                 </div>
                 <div class="col-6 col-md-4" data-aos="zoom-in" data-aos-delay="200">
                     <div class="gallery-item">
-                        <img src="/home/divin/CCTA/images/20260728_141057.jpg" alt="Banc de test" loading="lazy" />
+                        <img src="images/20260728_141057.jpg" alt="Banc de test" loading="lazy" />
                         <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
                     </div>
                 </div>
                 <div class="col-6 col-md-4" data-aos="zoom-in" data-aos-delay="300">
                     <div class="gallery-item">
-                        <img src="/home/divin/CCTA/images/20260728_141120.jpg" alt="Contrôleurs" loading="lazy" />
+                        <img src="images/20260728_141120.jpg" alt="Contrôleurs" loading="lazy" />
                         <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
                     </div>
                 </div>
@@ -3066,7 +2764,6 @@
                 </div>
                 <div class="col-12 col-lg-7" data-aos="fade-left">
                     <div class="rounded-4 overflow-hidden shadow-sm h-100" style="min-height: 350px; border: 2px solid var(--border-color);">
-                        <!-- Google Maps avec coordonnées précises (Kinshasa, RDC) -->
                         <iframe 
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1995.597!2d15.2970!3d-4.3250!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1a6a313000000000%3A0x1!2zS2luc2hhc2E!5e0!3m2!1sfr!2scd!4v1600000000000" 
                             width="100%" 
