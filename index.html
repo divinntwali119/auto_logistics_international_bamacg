@@ -1,0 +1,3242 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
+    <title>CCTA - Centre de Contrôle Technique des Automobiles</title>
+    <meta name="description" content="Centre de Contrôle Technique des Automobiles. Sécurité, expertise et technologie au service de votre véhicule." />
+    <meta name="theme-color" content="#0A3D62" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <style>
+        :root {
+            --primary-color: #0A3D62;
+            --primary-dark: #062842;
+            --primary-light: #1a5a8a;
+            --primary-gradient: linear-gradient(135deg, #0A3D62, #1a5a8a);
+            --accent-color: #E74C3C;
+            --accent-hover: #C0392B;
+            --accent-gradient: linear-gradient(135deg, #E74C3C, #C0392B);
+            --bg-light: #F0F2F5;
+            --bg-white: #FFFFFF;
+            --text-dark: #1A1A2E;
+            --text-muted: #6B7280;
+            --text-light: #FFFFFF;
+            --card-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 20px 60px rgba(0, 0, 0, 0.15);
+            --transition-smooth: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --border-radius: 20px;
+            --font-heading: 'Montserrat', sans-serif;
+            --font-body: 'Roboto', sans-serif;
+            --section-bg: #F0F2F5;
+            --card-bg: #FFFFFF;
+            --border-color: #E5E7EB;
+            --input-bg: #F9FAFB;
+        }
+
+        [data-theme="dark"] {
+            --primary-color: #0d1117;
+            --primary-dark: #06080a;
+            --primary-light: #1c2333;
+            --bg-light: #0d1117;
+            --bg-white: #161b22;
+            --text-dark: #F0F6FC;
+            --text-muted: #8B949E;
+            --text-light: #F0F6FC;
+            --card-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            --shadow-hover: 0 20px 60px rgba(0, 0, 0, 0.7);
+            --section-bg: #0d1117;
+            --card-bg: #21262d;
+            --border-color: #30363d;
+            --input-bg: #2d333b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            overflow-x: hidden;
+            -webkit-text-size-adjust: 100%;
+        }
+        body {
+            font-family: var(--font-body);
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            overflow-x: hidden;
+            transition: background-color 0.5s ease, color 0.5s ease;
+            -webkit-font-smoothing: antialiased;
+        }
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: var(--font-heading);
+            font-weight: 700;
+        }
+        ::selection {
+            background: var(--accent-color);
+            color: var(--text-light);
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-light);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent-color);
+            border-radius: 10px;
+        }
+
+        /* PRELOADER */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--primary-gradient);
+            z-index: 99999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+        #preloader.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+        .preloader-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+        }
+        .preloader-logo-wrapper {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            margin-bottom: 25px;
+        }
+        .preloader-logo {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 70px;
+            height: 70px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: var(--text-light);
+            z-index: 2;
+            animation: logoPulse 1.5s ease-in-out infinite;
+        }
+        @keyframes logoPulse {
+            0%,
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+                box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.2);
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(1.05);
+                box-shadow: 0 0 30px 10px rgba(255, 255, 255, 0.1);
+            }
+        }
+        .preloader-ring {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            border: 3px solid transparent;
+            border-top-color: var(--accent-color);
+            animation: spinRing 1.2s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
+        }
+        .preloader-ring-2 {
+            width: 100px;
+            height: 100px;
+            border-top-color: var(--text-light);
+            animation-duration: 1.8s;
+            animation-delay: 0.3s;
+        }
+        .preloader-ring-3 {
+            width: 130px;
+            height: 130px;
+            border-top-color: rgba(255, 255, 255, 0.3);
+            animation-duration: 2.4s;
+            animation-delay: 0.6s;
+        }
+        @keyframes spinRing {
+            0% {
+                transform: translate(-50%, -50%) rotate(0deg);
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translate(-50%, -50%) rotate(360deg);
+                opacity: 1;
+            }
+        }
+        .preloader-text {
+            font-family: var(--font-heading);
+            font-weight: 400;
+            font-size: 1.5rem;
+            color: var(--text-light);
+            letter-spacing: 6px;
+            margin-bottom: 5px;
+            animation: textFade 1.2s ease-out;
+        }
+        .preloader-subtitle {
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.7);
+            font-weight: 300;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+            animation: textFade 1.2s ease-out 0.2s both;
+        }
+        @keyframes textFade {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .preloader-dots {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+        .preloader-dots span {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--text-light);
+            animation: dotPulse 1.4s infinite ease-in-out both;
+        }
+        .preloader-dots span:nth-child(1) {
+            animation-delay: -0.32s;
+        }
+        .preloader-dots span:nth-child(2) {
+            animation-delay: -0.16s;
+        }
+        .preloader-dots span:nth-child(3) {
+            animation-delay: 0s;
+        }
+        @keyframes dotPulse {
+            0%,
+            80%,
+            100% {
+                transform: scale(0.4);
+                opacity: 0.3;
+            }
+            40% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        .preloader-progress {
+            width: 280px;
+            max-width: 80%;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+        }
+        .preloader-progress-bar {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, var(--accent-color), #f39c12, var(--accent-color));
+            background-size: 200% 100%;
+            border-radius: 4px;
+            animation: progressGradient 2s linear infinite;
+            transition: width 0.3s ease;
+        }
+        @keyframes progressGradient {
+            0% {
+                background-position: 0% 0%;
+            }
+            100% {
+                background-position: 200% 0%;
+            }
+        }
+
+        /* PROGRESS BAR */
+        #progressBar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: var(--accent-gradient);
+            z-index: 9998;
+            transition: width 0.1s ease;
+            box-shadow: 0 0 20px rgba(231, 76, 60, 0.4);
+        }
+
+        /* THEME TOGGLE */
+        .theme-toggle-btn {
+            position: fixed;
+            bottom: 80px;
+            right: 15px;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--card-bg);
+            color: var(--text-dark);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 999;
+            box-shadow: var(--card-shadow);
+            border: 2px solid var(--border-color);
+            transition: var(--transition-smooth);
+            font-size: 1.2rem;
+            backdrop-filter: blur(10px);
+        }
+        .theme-toggle-btn:hover {
+            transform: scale(1.1) rotate(20deg);
+            box-shadow: var(--shadow-hover);
+        }
+        .theme-toggle-btn .sun-icon,
+        .theme-toggle-btn .moon-icon {
+            transition: var(--transition-smooth);
+        }
+        [data-theme="dark"] .theme-toggle-btn .moon-icon {
+            display: none;
+        }
+        [data-theme="dark"] .theme-toggle-btn .sun-icon {
+            display: block;
+        }
+        [data-theme="light"] .theme-toggle-btn .moon-icon {
+            display: block;
+        }
+        [data-theme="light"] .theme-toggle-btn .sun-icon {
+            display: none;
+        }
+
+        /* BACK TO TOP */
+        #backToTop {
+            position: fixed;
+            bottom: 20px;
+            right: 15px;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--accent-gradient);
+            color: var(--text-light);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition-smooth);
+            box-shadow: 0 4px 20px rgba(231, 76, 60, 0.4);
+            border: none;
+            font-size: 1rem;
+        }
+        #backToTop.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        #backToTop:hover {
+            transform: translateY(-4px) scale(1.05);
+        }
+
+        /* NAVBAR - version mobile optimisée */
+        .navbar-custom {
+            background: rgba(10, 61, 98, 0.97);
+            backdrop-filter: blur(20px);
+            padding: 8px 0;
+            transition: var(--transition-smooth);
+            box-shadow: 0 2px 30px rgba(0, 0, 0, 0.15);
+            border-bottom: 2px solid transparent;
+            z-index: 1000;
+        }
+        [data-theme="dark"] .navbar-custom {
+            background: rgba(13, 17, 23, 0.97);
+        }
+        .navbar-custom.scrolled {
+            padding: 4px 0;
+            border-bottom-color: var(--accent-color);
+        }
+        .navbar-brand {
+            font-size: 1.1rem;
+            color: var(--text-light) !important;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 800;
+        }
+        .navbar-brand i {
+            font-size: 1.3rem;
+        }
+        .brand-badge {
+            background: var(--accent-gradient);
+            color: var(--text-light);
+            font-size: 0.45rem;
+            padding: 2px 8px;
+            border-radius: 20px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        .nav-link {
+            color: rgba(255, 255, 255, 0.8) !important;
+            font-weight: 500;
+            font-size: 0.78rem;
+            margin: 0 2px;
+            transition: var(--transition-smooth);
+            position: relative;
+            padding: 4px 0 !important;
+            letter-spacing: 0.3px;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--accent-gradient);
+            transition: var(--transition-smooth);
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 50%;
+        }
+        .nav-link:hover {
+            color: var(--text-light) !important;
+        }
+        .navbar-toggler {
+            border: none;
+            padding: 4px 8px;
+            font-size: 1rem;
+        }
+        .navbar-toggler:focus {
+            box-shadow: none;
+        }
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255,255,255,0.9)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+            width: 1.4em;
+            height: 1.4em;
+        }
+        @media (max-width: 991px) {
+            .navbar-custom .container {
+                padding-left: 12px;
+                padding-right: 12px;
+            }
+            .navbar-brand {
+                font-size: 0.95rem;
+                gap: 4px;
+            }
+            .navbar-brand i {
+                font-size: 1.1rem;
+            }
+            .brand-badge {
+                font-size: 0.4rem;
+                padding: 1px 6px;
+            }
+            .nav-link {
+                font-size: 0.82rem;
+                padding: 6px 0 !important;
+                text-align: center;
+            }
+            .navbar-nav .btn-ccta-primary {
+                font-size: 0.78rem;
+                padding: 6px 16px;
+                width: 100%;
+                text-align: center;
+                justify-content: center;
+            }
+        }
+        @media (max-width: 400px) {
+            .navbar-brand {
+                font-size: 0.8rem;
+                gap: 3px;
+            }
+            .navbar-brand i {
+                font-size: 0.9rem;
+            }
+            .brand-badge {
+                font-size: 0.35rem;
+                padding: 1px 4px;
+            }
+            .nav-link {
+                font-size: 0.72rem;
+                padding: 4px 0 !important;
+            }
+        }
+
+        /* HERO SWIPER */
+        .hero-section {
+            position: relative;
+            min-height: 100vh;
+            padding-top: 70px;
+            overflow: hidden;
+        }
+        .hero-slider {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 0;
+        }
+        .hero-slider .swiper-slide {
+            position: relative;
+            height: 100vh;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+        }
+        .hero-slider .swiper-slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(10, 61, 98, 0.85), rgba(6, 40, 66, 0.92));
+            z-index: 1;
+        }
+        .hero-slider .swiper-slide-1 {
+            background-image: url('https://images.unsplash.com/photo-1494976388531-d1058494cdd8?auto=format&fit=crop&w=1920&q=80');
+        }
+        .hero-slider .swiper-slide-2 {
+            background-image: url('https://images.unsplash.com/photo-1550355291-bbee04a92027?auto=format&fit=crop&w=1920&q=80');
+        }
+        .hero-slider .swiper-slide-3 {
+            background-image: url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1920&q=80');
+        }
+        .hero-slider .slide-content {
+            position: relative;
+            z-index: 2;
+            color: var(--text-light);
+            padding: 20px 0 80px;
+            width: 100%;
+            text-align: center;
+        }
+        .hero-slider .slide-badge {
+            display: inline-block;
+            background: var(--accent-gradient);
+            padding: 6px 20px;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            box-shadow: 0 4px 20px rgba(231, 76, 60, 0.3);
+            animation: fadeInUp 1s ease;
+        }
+        .hero-slider .slide-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 14px;
+            line-height: 1.1;
+            letter-spacing: -0.5px;
+            animation: fadeInUp 1s ease 0.2s both;
+            text-align: center;
+        }
+        .hero-slider .slide-title .highlight {
+            color: var(--accent-color);
+            position: relative;
+        }
+        .hero-slider .slide-text {
+            font-size: 1.1rem;
+            font-weight: 300;
+            margin: 0 auto 24px;
+            max-width: 580px;
+            line-height: 1.8;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease 0.4s both;
+            text-align: center;
+        }
+        .hero-slider .slide-btn {
+            animation: fadeInUp 1s ease 0.6s both;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+        }
+        .hero-slider .slide-btn .btn {
+            font-size: 0.9rem;
+            padding: 10px 28px;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .hero-slider .swiper-button-next,
+        .hero-slider .swiper-button-prev {
+            color: var(--text-light);
+            background: rgba(255, 255, 255, 0.12);
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            backdrop-filter: blur(15px);
+            transition: var(--transition-smooth);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            z-index: 10;
+        }
+        .hero-slider .swiper-button-next:hover,
+        .hero-slider .swiper-button-prev:hover {
+            background: var(--accent-gradient);
+            transform: scale(1.08);
+        }
+        .hero-slider .swiper-button-next::after,
+        .hero-slider .swiper-button-prev::after {
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+        .hero-slider .swiper-pagination {
+            bottom: 90px;
+            z-index: 10;
+        }
+        .hero-slider .swiper-pagination-bullet {
+            background: var(--text-light);
+            opacity: 0.4;
+            width: 12px;
+            height: 12px;
+            transition: var(--transition-smooth);
+            margin: 0 6px !important;
+        }
+        .hero-slider .swiper-pagination-bullet-active {
+            background: var(--accent-color);
+            opacity: 1;
+            width: 32px;
+            border-radius: 6px;
+            box-shadow: 0 0 20px rgba(231, 76, 60, 0.5);
+        }
+
+        /* HERO STATS */
+        .hero-stats-wrapper {
+            position: absolute;
+            bottom: 12px;
+            left: 0;
+            right: 0;
+            z-index: 5;
+            padding: 0 12px;
+        }
+        .hero-stats {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(25px);
+            border-radius: 16px;
+            padding: 10px 20px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            max-width: 760px;
+            margin: 0 auto;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
+        }
+        [data-theme="dark"] .hero-stats {
+            background: rgba(0, 0, 0, 0.35);
+        }
+        .hero-stats .stat-item {
+            text-align: center;
+            padding: 2px 0;
+        }
+        .hero-stats .stat-number {
+            font-size: 1.4rem;
+            font-weight: 900;
+            color: var(--accent-color);
+            display: block;
+            font-family: var(--font-heading);
+            line-height: 1.2;
+        }
+        .hero-stats .stat-label {
+            font-size: 0.55rem;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            opacity: 0.8;
+            font-weight: 500;
+            color: var(--text-light);
+            display: block;
+            margin-top: 2px;
+        }
+        .hero-stats .stat-divider {
+            width: 1px;
+            height: 28px;
+            background: rgba(255, 255, 255, 0.12);
+            margin: 0 auto;
+        }
+
+        /* SECTION BADGE */
+        .section-badge {
+            display: inline-block;
+            background: rgba(231, 76, 60, 0.1);
+            color: var(--accent-color);
+            padding: 4px 16px;
+            border-radius: 50px;
+            font-size: 0.65rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 8px;
+        }
+        .highlight-text {
+            color: var(--accent-color);
+            position: relative;
+        }
+        .section-padding {
+            padding: 70px 0;
+        }
+        .section-title {
+            position: relative;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        .section-title h2 {
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: color 0.3s ease;
+        }
+        [data-theme="dark"] .section-title h2 {
+            color: var(--text-light);
+        }
+        .section-title .subtitle {
+            color: var(--text-muted);
+            font-size: 1rem;
+            max-width: 550px;
+            margin: 10px auto 0;
+            padding: 0 15px;
+        }
+        .section-title .title-line {
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--accent-gradient);
+            margin: 16px auto 0;
+            border-radius: 2px;
+            position: relative;
+        }
+        .section-title .title-line::after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 16px;
+            height: 7px;
+            background: var(--accent-color);
+            border-radius: 4px;
+            animation: linePulse 2s infinite;
+        }
+        @keyframes linePulse {
+            0%,
+            100% {
+                width: 16px;
+                opacity: 1;
+            }
+            50% {
+                width: 30px;
+                opacity: 0.6;
+            }
+        }
+
+        /* BUTTONS */
+        .btn-ccta-primary {
+            background: var(--accent-gradient);
+            color: var(--text-light);
+            font-weight: 600;
+            padding: 10px 28px;
+            border-radius: 50px;
+            border: none;
+            transition: var(--transition-smooth);
+            box-shadow: 0 4px 25px rgba(231, 76, 60, 0.35);
+            display: inline-block;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+            font-size: 0.9rem;
+        }
+        .btn-ccta-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.6s ease;
+        }
+        .btn-ccta-primary:hover::before {
+            left: 100%;
+        }
+        .btn-ccta-primary:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 35px rgba(231, 76, 60, 0.45);
+            color: var(--text-light);
+        }
+        .btn-ccta-outline {
+            background: transparent;
+            color: var(--text-light);
+            font-weight: 600;
+            padding: 10px 28px;
+            border-radius: 50px;
+            border: 2px solid var(--text-light);
+            transition: var(--transition-smooth);
+            display: inline-block;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        .btn-ccta-outline:hover {
+            background: var(--text-light);
+            color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+        .btn-ccta-secondary {
+            background: var(--primary-gradient);
+            color: var(--text-light);
+            font-weight: 600;
+            padding: 8px 20px;
+            border-radius: 50px;
+            border: none;
+            transition: var(--transition-smooth);
+            display: inline-block;
+            text-decoration: none;
+            font-size: 0.8rem;
+        }
+        .btn-ccta-secondary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+            color: var(--text-light);
+        }
+        .section-bg-light {
+            background-color: var(--section-bg);
+        }
+        .section-bg-white {
+            background-color: var(--card-bg);
+        }
+
+        /* FEATURES */
+        .feature-card {
+            background: var(--card-bg);
+            padding: 30px 20px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--card-shadow);
+            transition: var(--transition-smooth);
+            height: 100%;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--accent-gradient);
+            transform: scaleX(0);
+            transition: var(--transition-smooth);
+        }
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+        .feature-icon {
+            width: 64px;
+            height: 64px;
+            background: var(--accent-gradient);
+            color: var(--text-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.7rem;
+            margin: 0 auto 16px;
+            transition: var(--transition-smooth);
+            box-shadow: 0 4px 25px rgba(231, 76, 60, 0.3);
+        }
+        .feature-card:hover .feature-icon {
+            transform: scale(1.1) rotate(-10deg);
+        }
+        .feature-card h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--text-dark);
+        }
+        .feature-card p {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-bottom: 0;
+        }
+
+        /* ABOUT */
+        .about-image-wrapper {
+            position: relative;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+        }
+        .about-image-wrapper img {
+            width: 100%;
+            height: auto;
+            min-height: 280px;
+            object-fit: cover;
+            transition: transform 0.7s ease;
+        }
+        .about-image-wrapper:hover img {
+            transform: scale(1.04);
+        }
+        .about-image-wrapper .badge-float {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: var(--accent-gradient);
+            color: var(--text-light);
+            padding: 12px 20px;
+            border-radius: 14px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            box-shadow: 0 10px 35px rgba(231, 76, 60, 0.4);
+            animation: floatBadge 3s ease-in-out infinite;
+            z-index: 2;
+        }
+        @keyframes floatBadge {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        .about-image-decoration .decoration-circle {
+            position: absolute;
+            top: -30px;
+            right: -30px;
+            width: 100px;
+            height: 100px;
+            border: 3px solid rgba(231, 76, 60, 0.15);
+            border-radius: 50%;
+            animation: spinCircle 20s linear infinite;
+        }
+        @keyframes spinCircle {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        .about-image-decoration .decoration-dots {
+            position: absolute;
+            bottom: 20px;
+            left: -15px;
+            width: 50px;
+            height: 50px;
+            background-image: radial-gradient(var(--accent-color) 2px, transparent 2px);
+            background-size: 12px 12px;
+            opacity: 0.15;
+        }
+        .about-mini-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 18px;
+            padding: 0 5px;
+            gap: 8px;
+        }
+        .about-mini-stats .mini-stat {
+            text-align: center;
+            padding: 8px 12px;
+            background: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+            border: 1px solid var(--border-color);
+            flex: 1;
+            transition: var(--transition-smooth);
+        }
+        .about-mini-stats .mini-stat:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+        .about-mini-stats .mini-stat-number {
+            display: block;
+            font-family: var(--font-heading);
+            font-weight: 900;
+            font-size: 1rem;
+            color: var(--accent-color);
+        }
+        .about-mini-stats .mini-stat-label {
+            font-size: 0.55rem;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            letter-spacing: 0.5px;
+        }
+        .about-header .about-sub-badge {
+            display: inline-block;
+            background: rgba(231, 76, 60, 0.1);
+            color: var(--accent-color);
+            padding: 4px 14px;
+            border-radius: 50px;
+            font-size: 0.65rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+        .about-header .about-title {
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--text-dark);
+            line-height: 1.2;
+            margin-bottom: 0;
+        }
+        .about-header .about-title .highlight-text::after {
+            content: '';
+            position: absolute;
+            bottom: 2px;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--accent-gradient);
+            border-radius: 2px;
+            opacity: 0.3;
+        }
+        .about-title-line {
+            width: 50px;
+            height: 4px;
+            background: var(--accent-gradient);
+            border-radius: 2px;
+            margin-top: 12px;
+        }
+        .about-description {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+        }
+        .about-description strong {
+            color: var(--text-dark);
+        }
+        .about-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            margin-bottom: 24px;
+        }
+        .about-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            padding: 16px 18px;
+            background: var(--card-bg);
+            border-radius: 14px;
+            border: 1px solid var(--border-color);
+            transition: var(--transition-smooth);
+        }
+        .about-card:hover {
+            transform: translateX(5px);
+            border-color: var(--accent-color);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+        }
+        .about-card-icon {
+            flex-shrink: 0;
+            width: 40px;
+            height: 40px;
+            background: rgba(231, 76, 60, 0.1);
+            color: var(--accent-color);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            transition: var(--transition-smooth);
+        }
+        .about-card:hover .about-card-icon {
+            background: var(--accent-gradient);
+            color: var(--text-light);
+            transform: scale(1.05);
+        }
+        .about-card-content h5 {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 2px;
+        }
+        .about-card-content p {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            margin-bottom: 0;
+            line-height: 1.6;
+        }
+        .about-certifications {
+            padding-top: 16px;
+            border-top: 2px solid var(--border-color);
+        }
+        .about-certifications .cert-label {
+            display: block;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+        }
+        .about-certifications .cert-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .about-certifications .cert-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 14px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--text-dark);
+            transition: var(--transition-smooth);
+        }
+        .about-certifications .cert-badge i {
+            color: var(--accent-color);
+            font-size: 0.8rem;
+        }
+        .about-certifications .cert-badge:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.15);
+        }
+
+        /* SERVICES */
+        .service-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition-smooth);
+            height: 100%;
+            border: 1px solid var(--border-color);
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+        .service-img-wrapper {
+            position: relative;
+            height: 180px;
+            overflow: hidden;
+        }
+        .service-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s ease;
+        }
+        .service-card:hover .service-img-wrapper img {
+            transform: scale(1.12);
+        }
+        .service-badge-icon {
+            position: absolute;
+            bottom: -18px;
+            right: 16px;
+            width: 42px;
+            height: 42px;
+            background: var(--accent-gradient);
+            color: var(--text-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            box-shadow: 0 4px 25px rgba(231, 76, 60, 0.4);
+        }
+        .service-content {
+            padding: 22px 18px 18px;
+        }
+        .service-content h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 6px;
+        }
+        [data-theme="dark"] .service-content h4 {
+            color: var(--text-light);
+        }
+        .service-content p {
+            color: var(--text-muted);
+            font-size: 0.82rem;
+            margin-bottom: 14px;
+        }
+
+        /* TEAM */
+        .team-stats {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 24px;
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 20px 30px;
+            margin-bottom: 40px;
+            border: 1px solid var(--border-color);
+            flex-wrap: wrap;
+        }
+        .team-stat-item {
+            text-align: center;
+        }
+        .team-stat-number {
+            display: block;
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--accent-color);
+        }
+        .team-stat-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            letter-spacing: 0.5px;
+        }
+        .team-stat-divider {
+            width: 1px;
+            height: 36px;
+            background: var(--border-color);
+        }
+        .team-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition-smooth);
+            height: 100%;
+            border: 1px solid var(--border-color);
+        }
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+        .team-card-image {
+            position: relative;
+            height: 220px;
+            overflow: hidden;
+        }
+        .team-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s ease;
+        }
+        .team-card:hover .team-card-image img {
+            transform: scale(1.08);
+        }
+        .team-card-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(10, 61, 98, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: var(--transition-smooth);
+            backdrop-filter: blur(4px);
+        }
+        .team-card:hover .team-card-overlay {
+            opacity: 1;
+        }
+        .team-social {
+            display: flex;
+            gap: 12px;
+        }
+        .team-social a {
+            display: inline-flex;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.15);
+            color: var(--text-light);
+            border-radius: 50%;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition-smooth);
+            text-decoration: none;
+            font-size: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .team-social a:hover {
+            background: var(--accent-gradient);
+            transform: translateY(-4px) scale(1.1);
+            border-color: transparent;
+        }
+        .team-card-badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: var(--accent-gradient);
+            color: var(--text-light);
+            padding: 3px 12px;
+            border-radius: 50px;
+            font-size: 0.55rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+        }
+        .team-card-badge-blue {
+            background: linear-gradient(135deg, #2980b9, #3498db);
+        }
+        .team-card-badge-green {
+            background: linear-gradient(135deg, #27ae60, #2ecc71);
+        }
+        .team-card-badge-orange {
+            background: linear-gradient(135deg, #f39c12, #e67e22);
+        }
+        .team-card-content {
+            padding: 18px 16px 14px;
+        }
+        .team-card-content h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 2px;
+        }
+        .team-role {
+            font-size: 0.75rem;
+            color: var(--accent-color);
+            font-weight: 500;
+            display: block;
+            margin-bottom: 10px;
+        }
+        .team-expertise {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+            margin-bottom: 10px;
+        }
+        .expertise-tag {
+            display: inline-block;
+            padding: 2px 8px;
+            background: rgba(231, 76, 60, 0.08);
+            color: var(--accent-color);
+            border-radius: 50px;
+            font-size: 0.6rem;
+            font-weight: 500;
+        }
+        .team-card-content p {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+            line-height: 1.6;
+        }
+        .team-card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 12px;
+            border-top: 1px solid var(--border-color);
+        }
+        .team-experience {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+        }
+        .team-contact-btn {
+            display: inline-flex;
+            width: 32px;
+            height: 32px;
+            background: var(--accent-gradient);
+            color: var(--text-light);
+            border-radius: 50%;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition-smooth);
+            text-decoration: none;
+            font-size: 0.8rem;
+        }
+        .team-contact-btn:hover {
+            transform: scale(1.1);
+            color: var(--text-light);
+        }
+        .team-cta {
+            margin-top: 40px;
+            background: var(--primary-gradient);
+            border-radius: var(--border-radius);
+            padding: 32px 40px;
+            box-shadow: 0 10px 40px rgba(10, 61, 98, 0.2);
+        }
+        .team-cta-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .team-cta-text h3 {
+            color: var(--text-light);
+            font-size: 1.3rem;
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+        .team-cta-text p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+            margin-bottom: 0;
+        }
+        .team-cta .btn-ccta-primary {
+            background: var(--text-light);
+            color: var(--primary-color);
+            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.15);
+        }
+        .team-cta .btn-ccta-primary:hover {
+            background: var(--text-light);
+            transform: translateY(-3px) scale(1.02);
+            color: var(--primary-color);
+        }
+
+        /* TARIFS - SECTION PREMIUM */
+        .pricing-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 32px 24px 28px;
+            box-shadow: var(--card-shadow);
+            border: 1px solid var(--border-color);
+            transition: var(--transition-smooth);
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+        .pricing-card.popular {
+            border-color: var(--accent-color);
+            transform: scale(1.02);
+        }
+        .pricing-card.popular:hover {
+            transform: scale(1.02) translateY(-10px);
+        }
+        .pricing-card .popular-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: var(--accent-gradient);
+            color: var(--text-light);
+            padding: 4px 14px;
+            border-radius: 50px;
+            font-size: 0.6rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+        }
+        .pricing-card .pricing-icon {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 12px;
+        }
+        .pricing-card h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 4px;
+        }
+        .pricing-card .pricing-sub {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+        }
+        .pricing-card .pricing-price {
+            font-family: var(--font-heading);
+            font-size: 2.8rem;
+            font-weight: 900;
+            color: var(--accent-color);
+            line-height: 1;
+        }
+        .pricing-card .pricing-price small {
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: var(--text-muted);
+        }
+        .pricing-card .pricing-features {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0 24px;
+            text-align: left;
+        }
+        .pricing-card .pricing-features li {
+            padding: 8px 0;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .pricing-card .pricing-features li:last-child {
+            border-bottom: none;
+        }
+        .pricing-card .pricing-features li i {
+            color: var(--accent-color);
+            width: 18px;
+            text-align: center;
+        }
+        .pricing-card .pricing-features li .fa-times {
+            color: #e74c3c;
+            opacity: 0.4;
+        }
+
+        /* TESTIMONIALS */
+        .global-rating {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 16px 24px;
+            margin-bottom: 36px;
+            border: 1px solid var(--border-color);
+            flex-wrap: wrap;
+        }
+        .global-rating-stars {
+            display: flex;
+            gap: 4px;
+            color: #f1c40f;
+            font-size: 1.1rem;
+        }
+        .global-rating-score {
+            font-family: var(--font-heading);
+            font-size: 1.6rem;
+            font-weight: 900;
+            color: var(--text-dark);
+        }
+        .global-rating-text {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+        .global-rating-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(46, 204, 113, 0.12);
+            color: #27ae60;
+            padding: 4px 14px;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+        .testimonials-slider {
+            position: relative;
+            padding: 10px 5px 50px;
+            margin-bottom: 30px;
+        }
+        .testimonials-slider .swiper-slide {
+            height: auto;
+        }
+        .testimonial-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 24px 22px;
+            box-shadow: var(--card-shadow);
+            border: 1px solid var(--border-color);
+            height: 100%;
+            transition: var(--transition-smooth);
+            display: flex;
+            flex-direction: column;
+        }
+        .testimonial-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+        }
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        .testimonial-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            overflow: hidden;
+            flex-shrink: 0;
+            border: 3px solid var(--accent-color);
+        }
+        .testimonial-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .testimonial-user {
+            flex: 1;
+        }
+        .testimonial-user h5 {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 1px;
+        }
+        .testimonial-vehicle {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+        }
+        .testimonial-rating {
+            display: flex;
+            gap: 3px;
+            color: #f1c40f;
+            font-size: 0.8rem;
+            flex-shrink: 0;
+        }
+        .testimonial-rating .fa-regular {
+            color: #d1d5db;
+        }
+        .testimonial-body {
+            flex: 1;
+            margin-bottom: 12px;
+        }
+        .testimonial-body p {
+            font-size: 0.9rem;
+            line-height: 1.7;
+            color: var(--text-dark);
+            font-style: italic;
+            margin-bottom: 0;
+        }
+        .testimonial-body p::before {
+            content: '"';
+            color: var(--accent-color);
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+        .testimonial-body p::after {
+            content: '"';
+            color: var(--accent-color);
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+        .testimonial-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 12px;
+            border-top: 1px solid var(--border-color);
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+        .testimonial-date {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+        }
+        .testimonial-verified {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.65rem;
+            color: #27ae60;
+            font-weight: 600;
+        }
+        .testimonial-verified i {
+            font-size: 0.7rem;
+        }
+        .testimonials-slider .swiper-button-next,
+        .testimonials-slider .swiper-button-prev {
+            color: var(--text-dark);
+            background: var(--card-bg);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            box-shadow: var(--card-shadow);
+            border: 1px solid var(--border-color);
+            transition: var(--transition-smooth);
+        }
+        .testimonials-slider .swiper-button-next:hover,
+        .testimonials-slider .swiper-button-prev:hover {
+            background: var(--accent-color);
+            color: var(--text-light);
+        }
+        .testimonials-slider .swiper-button-next::after,
+        .testimonials-slider .swiper-button-prev::after {
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+        .testimonials-slider .swiper-pagination {
+            bottom: 0;
+        }
+        .testimonials-slider .swiper-pagination-bullet {
+            width: 10px;
+            height: 10px;
+            background: var(--text-muted);
+            opacity: 0.3;
+            transition: var(--transition-smooth);
+        }
+        .testimonials-slider .swiper-pagination-bullet-active {
+            background: var(--accent-color);
+            opacity: 1;
+            width: 26px;
+            border-radius: 5px;
+        }
+
+        /* GALLERY */
+        .gallery-item {
+            position: relative;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            height: 200px;
+            cursor: pointer;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s ease;
+        }
+        .gallery-item .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(10, 61, 98, 0.85);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: var(--transition-smooth);
+            color: var(--text-light);
+            font-size: 2rem;
+            backdrop-filter: blur(5px);
+        }
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+        .gallery-item:hover img {
+            transform: scale(1.12);
+        }
+
+        /* CONTACT */
+        .contact-info-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 30px 24px;
+            box-shadow: var(--card-shadow);
+            height: 100%;
+            border: 1px solid var(--border-color);
+        }
+        .contact-info-card .info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            padding: 14px 0;
+            border-bottom: 1px solid var(--border-color);
+            transition: var(--transition-smooth);
+        }
+        .contact-info-card .info-item:last-child {
+            border-bottom: none;
+        }
+        .contact-info-card .info-item:hover {
+            padding-left: 6px;
+        }
+        .contact-info-card .info-icon {
+            width: 42px;
+            height: 42px;
+            flex-shrink: 0;
+            background: var(--accent-gradient);
+            color: var(--text-light);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            transition: var(--transition-smooth);
+        }
+        .contact-info-card .info-item:hover .info-icon {
+            transform: scale(1.08) rotate(-5deg);
+        }
+        .contact-info-card h6 {
+            font-size: 0.82rem;
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+        .contact-info-card p {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            margin-bottom: 0;
+        }
+
+        /* FOOTER */
+        .footer {
+            background: var(--primary-dark);
+            color: var(--text-light);
+            padding-top: 60px;
+            padding-bottom: 20px;
+        }
+        [data-theme="dark"] .footer {
+            background: #06080a;
+        }
+        .footer-widget h5 {
+            color: var(--text-light);
+            margin-bottom: 16px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        .footer-widget h5::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 30px;
+            height: 3px;
+            background: var(--accent-gradient);
+            border-radius: 2px;
+        }
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+        .footer-links li {
+            margin-bottom: 8px;
+        }
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            transition: var(--transition-smooth);
+            font-size: 0.82rem;
+        }
+        .footer-links a:hover {
+            color: var(--text-light);
+            padding-left: 6px;
+        }
+        .social-icons {
+            display: flex;
+            gap: 8px;
+            margin-top: 12px;
+            flex-wrap: wrap;
+        }
+        .social-icons a {
+            display: inline-flex;
+            width: 38px;
+            height: 38px;
+            background: rgba(255, 255, 255, 0.06);
+            color: var(--text-light);
+            border-radius: 50%;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition-smooth);
+            text-decoration: none;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            font-size: 0.85rem;
+        }
+        .social-icons a:hover {
+            background: var(--accent-gradient);
+            transform: translateY(-4px) scale(1.05);
+            border-color: transparent;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 991px) {
+            .hero-slider .slide-title {
+                font-size: 2.6rem;
+            }
+            .hero-slider .slide-text {
+                font-size: 0.95rem;
+                max-width: 90%;
+            }
+            .hero-slider .swiper-button-next,
+            .hero-slider .swiper-button-prev {
+                display: none;
+            }
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            .hero-stats .stat-number {
+                font-size: 1.2rem;
+            }
+            .hero-stats .stat-label {
+                font-size: 0.5rem;
+            }
+            .global-rating {
+                padding: 14px 18px;
+                gap: 10px;
+            }
+            .global-rating-score {
+                font-size: 1.3rem;
+            }
+            .testimonial-card {
+                padding: 18px 16px;
+            }
+            .testimonial-avatar {
+                width: 42px;
+                height: 42px;
+            }
+            .testimonials-slider .swiper-button-next,
+            .testimonials-slider .swiper-button-prev {
+                display: none;
+            }
+            .team-stats {
+                gap: 16px;
+                padding: 16px 20px;
+            }
+            .team-stat-number {
+                font-size: 1.4rem;
+            }
+            .team-cta {
+                padding: 24px 20px;
+            }
+            .team-cta-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .pricing-card.popular {
+                transform: scale(1);
+            }
+            .pricing-card.popular:hover {
+                transform: scale(1) translateY(-10px);
+            }
+        }
+        @media (max-width: 767px) {
+            .hero-slider .slide-title {
+                font-size: 2rem;
+                padding: 0 10px;
+            }
+            .hero-slider .slide-text {
+                font-size: 0.85rem;
+                max-width: 100%;
+                padding: 0 12px;
+            }
+            .hero-slider .slide-badge {
+                font-size: 0.6rem;
+                padding: 4px 16px;
+                margin-bottom: 12px;
+            }
+            .hero-slider .slide-btn .btn {
+                font-size: 0.78rem;
+                padding: 8px 18px;
+            }
+            .hero-slider .swiper-pagination {
+                bottom: 75px;
+            }
+            .hero-stats-wrapper {
+                padding: 0 8px;
+                bottom: 6px;
+            }
+            .hero-stats {
+                padding: 8px 12px;
+                border-radius: 12px;
+                max-width: 100%;
+            }
+            .hero-stats .stat-number {
+                font-size: 1rem;
+            }
+            .hero-stats .stat-label {
+                font-size: 0.45rem;
+                letter-spacing: 0.5px;
+            }
+            .hero-stats .stat-divider {
+                height: 22px;
+            }
+            .section-padding {
+                padding: 45px 0;
+            }
+            .section-title {
+                margin-bottom: 28px;
+            }
+            .section-title h2 {
+                font-size: 1.4rem;
+            }
+            .section-title .subtitle {
+                font-size: 0.85rem;
+                padding: 0 10px;
+            }
+            .feature-card {
+                padding: 20px 14px;
+            }
+            .feature-icon {
+                width: 54px;
+                height: 54px;
+                font-size: 1.3rem;
+            }
+            .feature-card h4 {
+                font-size: 0.85rem;
+            }
+            .feature-card p {
+                font-size: 0.78rem;
+            }
+            .service-img-wrapper {
+                height: 150px;
+            }
+            .service-content {
+                padding: 16px 14px 14px;
+            }
+            .service-content h4 {
+                font-size: 0.85rem;
+            }
+            .service-content p {
+                font-size: 0.78rem;
+            }
+            .service-badge-icon {
+                width: 36px;
+                height: 36px;
+                font-size: 0.8rem;
+                bottom: -16px;
+                right: 12px;
+            }
+            .about-image-wrapper img {
+                min-height: 200px;
+            }
+            .about-image-wrapper .badge-float {
+                font-size: 0.7rem;
+                padding: 8px 14px;
+                bottom: 12px;
+                right: 12px;
+            }
+            .about-mini-stats {
+                flex-wrap: wrap;
+                gap: 6px;
+            }
+            .about-mini-stats .mini-stat {
+                flex: 1 1 calc(33.33% - 10px);
+                min-width: 70px;
+                padding: 6px 8px;
+            }
+            .about-mini-stats .mini-stat-number {
+                font-size: 0.85rem;
+            }
+            .about-mini-stats .mini-stat-label {
+                font-size: 0.45rem;
+            }
+            .about-header .about-title {
+                font-size: 1.3rem;
+            }
+            .about-description {
+                font-size: 0.88rem;
+            }
+            .about-card {
+                padding: 12px 14px;
+            }
+            .about-card-icon {
+                width: 34px;
+                height: 34px;
+                font-size: 0.85rem;
+            }
+            .about-card-content h5 {
+                font-size: 0.82rem;
+            }
+            .about-card-content p {
+                font-size: 0.75rem;
+            }
+            .about-certifications .cert-badge {
+                font-size: 0.65rem;
+                padding: 4px 10px;
+            }
+            .team-stats {
+                gap: 8px;
+                padding: 12px;
+                flex-wrap: wrap;
+            }
+            .team-stat-item {
+                flex: 1 1 calc(50% - 10px);
+                min-width: 70px;
+            }
+            .team-stat-number {
+                font-size: 1.1rem;
+            }
+            .team-stat-label {
+                font-size: 0.55rem;
+            }
+            .team-stat-divider {
+                display: none;
+            }
+            .team-card-image {
+                height: 180px;
+            }
+            .team-card-content h4 {
+                font-size: 0.9rem;
+            }
+            .team-cta {
+                padding: 20px 16px;
+            }
+            .team-cta-text h3 {
+                font-size: 1.1rem;
+            }
+            .team-cta-text p {
+                font-size: 0.8rem;
+            }
+            .pricing-card {
+                padding: 24px 18px 20px;
+            }
+            .pricing-card .pricing-price {
+                font-size: 2.2rem;
+            }
+            .pricing-card .pricing-features li {
+                font-size: 0.78rem;
+                padding: 6px 0;
+            }
+            .global-rating {
+                flex-direction: column;
+                text-align: center;
+                padding: 14px;
+            }
+            .global-rating-stars {
+                font-size: 0.9rem;
+            }
+            .global-rating-score {
+                font-size: 1.2rem;
+            }
+            .global-rating-text {
+                font-size: 0.75rem;
+            }
+            .testimonial-header {
+                flex-wrap: wrap;
+            }
+            .testimonial-rating {
+                margin-left: auto;
+            }
+            .testimonial-body p {
+                font-size: 0.82rem;
+            }
+            .testimonial-footer {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .gallery-item {
+                height: 150px;
+            }
+            .contact-info-card {
+                padding: 18px 14px;
+            }
+            .contact-info-card .info-icon {
+                width: 36px;
+                height: 36px;
+                font-size: 0.85rem;
+            }
+            .contact-info-card h6 {
+                font-size: 0.78rem;
+            }
+            .contact-info-card p {
+                font-size: 0.78rem;
+            }
+            .footer {
+                padding-top: 36px;
+            }
+            .footer-widget {
+                margin-bottom: 18px;
+            }
+            .theme-toggle-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 0.9rem;
+                right: 10px;
+                bottom: 70px;
+            }
+            #backToTop {
+                width: 40px;
+                height: 40px;
+                font-size: 0.8rem;
+                right: 10px;
+            }
+        }
+        @media (max-width: 400px) {
+            .hero-slider .slide-title {
+                font-size: 1.6rem;
+                padding: 0 5px;
+            }
+            .hero-slider .slide-text {
+                font-size: 0.75rem;
+                padding: 0 8px;
+            }
+            .hero-slider .slide-badge {
+                font-size: 0.5rem;
+                padding: 3px 12px;
+            }
+            .hero-slider .slide-btn .btn {
+                font-size: 0.7rem;
+                padding: 6px 14px;
+            }
+            .hero-stats .stat-number {
+                font-size: 0.85rem;
+            }
+            .hero-stats .stat-label {
+                font-size: 0.4rem;
+            }
+            .section-title h2 {
+                font-size: 1.2rem;
+            }
+            .btn-ccta-primary,
+            .btn-ccta-outline {
+                font-size: 0.72rem;
+                padding: 6px 14px;
+            }
+            .about-header .about-title {
+                font-size: 1.1rem;
+            }
+            .about-mini-stats .mini-stat {
+                flex: 1 1 calc(50% - 5px);
+                padding: 4px 6px;
+            }
+            .about-mini-stats .mini-stat:last-child {
+                flex: 1 1 100%;
+            }
+            .team-stat-item {
+                flex: 1 1 100%;
+            }
+            .team-card-image {
+                height: 150px;
+            }
+            .pricing-card .pricing-price {
+                font-size: 1.8rem;
+            }
+            .testimonial-avatar {
+                width: 36px;
+                height: 36px;
+            }
+            .testimonial-user h5 {
+                font-size: 0.8rem;
+            }
+            .testimonial-rating {
+                font-size: 0.7rem;
+            }
+            .testimonial-body p {
+                font-size: 0.78rem;
+            }
+            .global-rating-badge {
+                font-size: 0.6rem;
+                padding: 2px 10px;
+            }
+            .gallery-item {
+                height: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- PRELOADER -->
+    <div id="preloader">
+        <div class="preloader-content">
+            <div class="preloader-logo-wrapper">
+                <div class="preloader-logo"><i class="fa-solid fa-car-tunnel"></i></div>
+                <div class="preloader-ring"></div>
+                <div class="preloader-ring preloader-ring-2"></div>
+                <div class="preloader-ring preloader-ring-3"></div>
+            </div>
+            <div class="preloader-text">AUTO LOGISTICS INTERNATIONAL</div>
+            <p class="preloader-subtitle">Centre de Contrôle Technique des Véhicules Automobiles</p>
+            <div class="preloader-dots">
+                <span></span><span></span><span></span>
+            </div>
+            <div class="preloader-progress">
+                <div class="preloader-progress-bar" id="preloaderProgress"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PROGRESS BAR -->
+    <div id="progressBar"></div>
+
+    <!-- THEME TOGGLE -->
+    <div class="theme-toggle-btn" id="themeToggle" title="Changer le mode">
+        <span class="moon-icon"><i class="fa-solid fa-moon"></i></span>
+        <span class="sun-icon"><i class="fa-solid fa-sun"></i></span>
+    </div>
+
+    <!-- BACK TO TOP -->
+    <div id="backToTop"><i class="fa-solid fa-arrow-up"></i></div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top navbar-custom" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand" href="#accueil">
+                <i class="fa-solid fa-car-tunnel"></i>
+                <span>AUTO LOGISTICS</span>
+                <span class="brand-badge">CCTVA</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-lg-center">
+                    <li class="nav-item"><a class="nav-link active" href="#accueil">Accueil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#apropos">À Propos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#equipe">Équipe</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#tarifs">Tarifs</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#galerie">Galerie</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#temoignages">Avis</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                    <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+                        <a href="#rendezvous" class="btn btn-ccta-primary" style="padding: 6px 18px; font-size: 0.75rem;"><i class="fa-solid fa-calendar-check me-1"></i>Rendez-vous</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section id="accueil" class="hero-section">
+        <div class="hero-slider swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide swiper-slide-1">
+                    <div class="container slide-content">
+                        <div class="row justify-content-center">
+                            <div class="col-12 col-lg-8">
+                                <span class="slide-badge"><i class="fa-solid fa-shield-halved me-1"></i> Sécurité avant tout</span>
+                                <h1 class="slide-title">Contrôle Technique<br><span class="highlight">Automobile</span></h1>
+                                <p class="slide-text">Votre sécurité et la conformité de votre véhicule sont nos priorités absolues. Une inspection de haute précision réalisée par des experts certifiés.</p>
+                                <div class="slide-btn">
+                                    <a href="#rendezvous" class="btn btn-ccta-primary"><i class="fa-solid fa-clock me-1"></i>Rendez-vous</a>
+                                    <a href="#services" class="btn btn-ccta-outline"><i class="fa-solid fa-list-check me-1"></i>Services</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide swiper-slide-2">
+                    <div class="container slide-content">
+                        <div class="row justify-content-center">
+                            <div class="col-12 col-lg-8">
+                                <span class="slide-badge"><i class="fa-solid fa-microchip me-1"></i> Haute technologie</span>
+                                <h1 class="slide-title">Diagnostic<br><span class="highlight">Électronique</span></h1>
+                                <p class="slide-text">Nos équipements dernière génération permettent une analyse approfondie de tous les systèmes électroniques de votre véhicule pour une sécurité optimale.</p>
+                                <div class="slide-btn">
+                                    <a href="#services" class="btn btn-ccta-primary"><i class="fa-solid fa-microchip me-1"></i>Découvrir</a>
+                                    <a href="#rendezvous" class="btn btn-ccta-outline"><i class="fa-solid fa-calendar-check me-1"></i>Rendez-vous</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide swiper-slide-3">
+                    <div class="container slide-content">
+                        <div class="row justify-content-center">
+                            <div class="col-12 col-lg-8">
+                                <span class="slide-badge"><i class="fa-solid fa-leaf me-1"></i> Engagement écologique</span>
+                                <h1 class="slide-title">Contrôle<br><span class="highlight">Antipollution</span></h1>
+                                <p class="slide-text">Engagés pour l'environnement, nous réalisons des contrôles antipollution rigoureux pour réduire l'impact de votre véhicule et préserver la qualité de l'air.</p>
+                                <div class="slide-btn">
+                                    <a href="#services" class="btn btn-ccta-primary"><i class="fa-solid fa-leaf me-1"></i>En savoir plus</a>
+                                    <a href="#rendezvous" class="btn btn-ccta-outline"><i class="fa-solid fa-calendar-check me-1"></i>Rendez-vous</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
+        </div>
+
+        <!-- STATS -->
+        <div class="hero-stats-wrapper">
+            <div class="hero-stats" data-aos="fade-up" data-aos-delay="300">
+                <div class="row g-0 align-items-center">
+                    <div class="col-3">
+                        <div class="stat-item">
+                            <span class="stat-number" data-target="10000">0</span>
+                            <span class="stat-label">Véhicules</span>
+                        </div>
+                    </div>
+                    <div class="col-1 d-none d-sm-block">
+                        <div class="stat-divider"></div>
+                    </div>
+                    <div class="col-3">
+                        <div class="stat-item">
+                            <span class="stat-number" data-target="15">0</span>
+                            <span class="stat-label">Années</span>
+                        </div>
+                    </div>
+                    <div class="col-1 d-none d-sm-block">
+                        <div class="stat-divider"></div>
+                    </div>
+                    <div class="col-3">
+                        <div class="stat-item">
+                            <span class="stat-number" data-target="98">0</span>
+                            <span class="stat-label">Satisfaction</span>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="stat-item">
+                            <span class="stat-number" data-target="4.8">0</span>
+                            <span class="stat-label">★ Note</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="section-padding section-bg-light">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>Pourquoi Choisir le CCTA ?</h2>
+                <p class="subtitle">Un engagement de rigueur et d'excellence pour tous vos contrôles automobiles.</p>
+                <span class="title-line"></span>
+            </div>
+            <div class="row g-4">
+                <div class="col-6 col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                        <h4>Sécurité Maximale</h4>
+                        <p>Contrôles rigoureux selon les normes internationales de sécurité routière.</p>
+                    </div>
+                </div>
+                <div class="col-6 col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fa-solid fa-user-gear"></i></div>
+                        <h4>Expertise Agréée</h4>
+                        <p>Contrôleurs certifiés et formés continuellement aux évolutions technologiques.</p>
+                    </div>
+                </div>
+                <div class="col-6 col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fa-solid fa-microchip"></i></div>
+                        <h4>Haute Technologie</h4>
+                        <p>Bancs de test informatisés dernière génération pour des diagnostics de précision.</p>
+                    </div>
+                </div>
+                <div class="col-6 col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="400">
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fa-solid fa-handshake-angle"></i></div>
+                        <h4>Fiabilité & Conseil</h4>
+                        <p>Rapport détaillé en toute transparence et conseils impartiaux pour l'entretien.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="apropos" class="section-padding section-bg-white">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6" data-aos="fade-right" data-aos-duration="800">
+                    <div class="about-image-wrapper">
+                        <img src="/home/divin/CCTA/images/20260728_141057.jpg" alt="Inspection CCTA" loading="lazy" />
+                        <div class="badge-float"><i class="fa-solid fa-star me-1"></i>15+ Ans d'Excellence</div>
+                        <div class="about-image-decoration">
+                            <div class="decoration-circle"></div>
+                            <div class="decoration-dots"></div>
+                        </div>
+                    </div>
+                    <div class="about-mini-stats">
+                        <div class="mini-stat">
+                            <span class="mini-stat-number">15+</span>
+                            <span class="mini-stat-label">Années d'expérience</span>
+                        </div>
+                        <div class="mini-stat">
+                            <span class="mini-stat-number">10K+</span>
+                            <span class="mini-stat-label">Véhicules contrôlés</span>
+                        </div>
+                        <div class="mini-stat">
+                            <span class="mini-stat-number">98%</span>
+                            <span class="mini-stat-label">Clients satisfaits</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left" data-aos-duration="800" data-aos-delay="100">
+                    <div class="about-header">
+                        <span class="about-sub-badge"><i class="fa-solid fa-circle-check me-1"></i>À propos de nous</span>
+                        <h2 class="about-title">Le Leader de l'<span class="highlight-text">Inspection</span> Automobile</h2>
+                        <div class="about-title-line"></div>
+                    </div>
+                    <p class="about-description">
+                        Depuis plus de <strong>15 ans</strong>, le CCTA s'impose comme le leader de l'inspection technique automobile, garant de la sécurité sur nos routes et de la conformité de votre véhicule.
+                    </p>
+                    <div class="about-cards">
+                        <div class="about-card">
+                            <div class="about-card-icon"><i class="fa-solid fa-bullseye"></i></div>
+                            <div class="about-card-content">
+                                <h5>Notre Mission</h5>
+                                <p>Garantir la sécurité routière globale et préserver l'environnement grâce à un contrôle technique rigoureux, impartial et technologiquement avancé.</p>
+                            </div>
+                        </div>
+                        <div class="about-card">
+                            <div class="about-card-icon"><i class="fa-solid fa-eye"></i></div>
+                            <div class="about-card-content">
+                                <h5>Notre Vision</h5>
+                                <p>Devenir la référence nationale incontournable en matière de diagnostic automobile et de transition écologique du parc roulant.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about-certifications">
+                        <span class="cert-label"><i class="fa-solid fa-award me-1"></i>Nos Homologations</span>
+                        <div class="cert-badges">
+                            <span class="cert-badge"><i class="fa-solid fa-certificate"></i> ISO 9001:2015</span>
+                            <span class="cert-badge"><i class="fa-solid fa-leaf"></i> Norme Eco-Test</span>
+                            <span class="cert-badge"><i class="fa-solid fa-shield-halved"></i> Agréé Ministère</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" class="section-padding section-bg-light">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>Nos Services d'Inspection</h2>
+                <p class="subtitle">Des prestations adaptées à tous les types de véhicules et aux exigences de chacun.</p>
+                <span class="title-line"></span>
+            </div>
+            <div class="row g-4">
+                <div class="col-6 col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-card">
+                        <div class="service-img-wrapper">
+                            <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=600&q=80" alt="Véhicules" loading="lazy" />
+                            <div class="service-badge-icon"><i class="fa-solid fa-car"></i></div>
+                        </div>
+                        <div class="service-content">
+                            <h4>Véhicules Particuliers</h4>
+                            <p>Inspection complète sur 133 points de contrôle clés (freinage, direction, visibilité...).</p>
+                            <a href="#rendezvous" class="btn btn-ccta-secondary btn-sm rounded-pill">Réserver</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-card">
+                        <div class="service-img-wrapper">
+                            <img src="https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=600&q=80" alt="Motos" loading="lazy" />
+                            <div class="service-badge-icon"><i class="fa-solid fa-motorcycle"></i></div>
+                        </div>
+                        <div class="service-content">
+                            <h4>Deux-Roues & Motos</h4>
+                            <p>Examen spécialisé adapté aux motos, scooters, trikes et quadricycles à moteur.</p>
+                            <a href="#rendezvous" class="btn btn-ccta-secondary btn-sm rounded-pill">Réserver</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-card">
+                        <div class="service-img-wrapper">
+                            <img src="https://images.unsplash.com/photo-1517524008697-84bbe3c3fd98?auto=format&fit=crop&w=600&q=80" alt="Poids lourds" loading="lazy" />
+                            <div class="service-badge-icon"><i class="fa-solid fa-truck-heavy"></i></div>
+                        </div>
+                        <div class="service-content">
+                            <h4>Poids Lourds</h4>
+                            <p>Lignes d'inspection haute capacité dédiées aux camions et véhicules utilitaires grand gabarit.</p>
+                            <a href="#rendezvous" class="btn btn-ccta-secondary btn-sm rounded-pill">Réserver</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-card">
+                        <div class="service-img-wrapper">
+                            <img src="https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=600&q=80" alt="Avant achat" loading="lazy" />
+                            <div class="service-badge-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+                        </div>
+                        <div class="service-content">
+                            <h4>Visite Avant Achat</h4>
+                            <p>Un bilan technique complet et impartial pour acheter un véhicule d'occasion en toute sérénité.</p>
+                            <a href="#rendezvous" class="btn btn-ccta-secondary btn-sm rounded-pill">Réserver</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-card">
+                        <div class="service-img-wrapper">
+                            <img src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=600&q=80" alt="Antipollution" loading="lazy" />
+                            <div class="service-badge-icon"><i class="fa-solid fa-smog"></i></div>
+                        </div>
+                        <div class="service-content">
+                            <h4>Contrôle Antipollution</h4>
+                            <p>Mesure de l'opacité des fumées et analyse des gaz d'échappement pour la conformité écologique.</p>
+                            <a href="#rendezvous" class="btn btn-ccta-secondary btn-sm rounded-pill">Réserver</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-card">
+                        <div class="service-img-wrapper">
+                            <img src="https://images.unsplash.com/photo-1486006920555-c77dce18193b?auto=format&fit=crop&w=600&q=80" alt="Diagnostic" loading="lazy" />
+                            <div class="service-badge-icon"><i class="fa-solid fa-laptop-code"></i></div>
+                        </div>
+                        <div class="service-content">
+                            <h4>Diagnostic Électronique</h4>
+                            <p>Analyse approfondie des calculateurs électroniques et systèmes d'assistance (ABS, ESP, Airbags...).</p>
+                            <a href="#rendezvous" class="btn btn-ccta-secondary btn-sm rounded-pill">Réserver</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TEAM -->
+    <section id="equipe" class="section-padding section-bg-light">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <span class="section-badge">Notre Équipe</span>
+                <h2>Des Experts <span class="highlight-text">À Votre Service</span></h2>
+                <p class="subtitle">Une équipe de professionnels passionnés, certifiés et dévoués à votre sécurité automobile.</p>
+                <span class="title-line"></span>
+            </div>
+            <div class="team-stats" data-aos="fade-up" data-aos-delay="100">
+                <div class="team-stat-item">
+                    <span class="team-stat-number">15</span>
+                    <span class="team-stat-label">Experts Certifiés</span>
+                </div>
+                <div class="team-stat-divider"></div>
+                <div class="team-stat-item">
+                    <span class="team-stat-number">200+</span>
+                    <span class="team-stat-label">Formations</span>
+                </div>
+                <div class="team-stat-divider"></div>
+                <div class="team-stat-item">
+                    <span class="team-stat-number">12</span>
+                    <span class="team-stat-label">Ans d'Expérience</span>
+                </div>
+                <div class="team-stat-divider"></div>
+                <div class="team-stat-item">
+                    <span class="team-stat-number">100%</span>
+                    <span class="team-stat-label">Agréés</span>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-12 col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="150">
+                    <div class="team-card">
+                        <div class="team-card-image">
+                            <img src="/home/divin/CCTA/images/552676407_122271216524034821_6934299949075729428_n.jpg" alt="Directeur" loading="lazy" />
+                            <div class="team-card-overlay">
+                                <div class="team-social">
+                                    <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                                    <a href="#"><i class="fa-brands fa-github"></i></a>
+                                </div>
+                            </div>
+                            <div class="team-card-badge">Expert</div>
+                        </div>
+                        <div class="team-card-content">
+                            <h4>Dr. Jean-Marc K.</h4>
+                            <span class="team-role">Directeur Technique</span>
+                            <div class="team-expertise">
+                                <span class="expertise-tag">Ingénierie</span>
+                                <span class="expertise-tag">15 ans</span>
+                            </div>
+                            <p>Expert en diagnostic électronique et en sécurité des véhicules modernes.</p>
+                            <div class="team-card-footer">
+                                <span class="team-experience"><i class="fa-regular fa-clock me-1"></i>15 ans</span>
+                                <a href="#contact" class="team-contact-btn"><i class="fa-regular fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="250">
+                    <div class="team-card">
+                        <div class="team-card-image">
+                            <img src="/home/divin/CCTA/images/552676407_122271216524034821_6934299949075729428_n.jpg" alt="Contrôleur" loading="lazy" />
+                            <div class="team-card-overlay">
+                                <div class="team-social">
+                                    <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                                    <a href="#"><i class="fa-brands fa-github"></i></a>
+                                </div>
+                            </div>
+                            <div class="team-card-badge team-card-badge-blue">Senior</div>
+                        </div>
+                        <div class="team-card-content">
+                            <h4>Pierre M.</h4>
+                            <span class="team-role">Contrôleur Senior</span>
+                            <div class="team-expertise">
+                                <span class="expertise-tag">Sécurité</span>
+                                <span class="expertise-tag">12 ans</span>
+                            </div>
+                            <p>Spécialiste en systèmes de freinage et en contrôle antipollution.</p>
+                            <div class="team-card-footer">
+                                <span class="team-experience"><i class="fa-regular fa-clock me-1"></i>12 ans</span>
+                                <a href="#contact" class="team-contact-btn"><i class="fa-regular fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="350">
+                    <div class="team-card">
+                        <div class="team-card-image">
+                            <img src="/home/divin/CCTA/images/552676407_122271216524034821_6934299949075729428_n.jpg" alt="Ingénieur" loading="lazy" />
+                            <div class="team-card-overlay">
+                                <div class="team-social">
+                                    <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                                    <a href="#"><i class="fa-brands fa-github"></i></a>
+                                </div>
+                            </div>
+                            <div class="team-card-badge team-card-badge-green">Certifiée</div>
+                        </div>
+                        <div class="team-card-content">
+                            <h4>Marie L.</h4>
+                            <span class="team-role">Ingénieur Diagnostic</span>
+                            <div class="team-expertise">
+                                <span class="expertise-tag">Électronique</span>
+                                <span class="expertise-tag">8 ans</span>
+                            </div>
+                            <p>Experte en calculateurs électroniques et systèmes d'assistance à la conduite.</p>
+                            <div class="team-card-footer">
+                                <span class="team-experience"><i class="fa-regular fa-clock me-1"></i>8 ans</span>
+                                <a href="#contact" class="team-contact-btn"><i class="fa-regular fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="450">
+                    <div class="team-card">
+                        <div class="team-card-image">
+                            <img src="/home/divin/CCTA/images/552676407_122271216524034821_6934299949075729428_n.jpg" alt="Spécialiste" loading="lazy" />
+                            <div class="team-card-overlay">
+                                <div class="team-social">
+                                    <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                                    <a href="#"><i class="fa-brands fa-github"></i></a>
+                                </div>
+                            </div>
+                            <div class="team-card-badge team-card-badge-orange">Spécialiste</div>
+                        </div>
+                        <div class="team-card-content">
+                            <h4>Alain T.</h4>
+                            <span class="team-role">Spécialiste Poids Lourds</span>
+                            <div class="team-expertise">
+                                <span class="expertise-tag">Transport</span>
+                                <span class="expertise-tag">10 ans</span>
+                            </div>
+                            <p>Expert en véhicules utilitaires, camions et transports de marchandises.</p>
+                            <div class="team-card-footer">
+                                <span class="team-experience"><i class="fa-regular fa-clock me-1"></i>10 ans</span>
+                                <a href="#contact" class="team-contact-btn"><i class="fa-regular fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="team-cta" data-aos="fade-up" data-aos-delay="200">
+                <div class="team-cta-content">
+                    <div class="team-cta-text">
+                        <h3>Vous souhaitez rejoindre notre équipe ?</h3>
+                        <p>Nous recrutons des talents passionnés par l'automobile et la sécurité routière.</p>
+                    </div>
+                    <a href="#contact" class="btn btn-ccta-primary"><i class="fa-solid fa-paper-plane me-2"></i>Postuler</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TARIFS - NOUVEAU BLOC -->
+    <section id="tarifs" class="section-padding section-bg-white">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <span class="section-badge">Nos Tarifs</span>
+                <h2>Des Offres <span class="highlight-text">Adaptées</span></h2>
+                <p class="subtitle">Des prestations de contrôle technique à des prix compétitifs, pour tous les types de véhicules.</p>
+                <span class="title-line"></span>
+            </div>
+
+            <div class="row g-4 justify-content-center">
+                <!-- Offre Standard -->
+                <div class="col-12 col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="pricing-card">
+                        <div class="pricing-icon"><i class="fa-solid fa-car"></i></div>
+                        <h4>Contrôle Standard</h4>
+                        <p class="pricing-sub">Véhicules particuliers</p>
+                        <div class="pricing-price">45€ <small>/ visite</small></div>
+                        <ul class="pricing-features">
+                            <li><i class="fa-solid fa-check"></i> 133 points de contrôle</li>
+                            <li><i class="fa-solid fa-check"></i> Freinage, direction, visibilité</li>
+                            <li><i class="fa-solid fa-check"></i> Rapport détaillé immédiat</li>
+                            <li><i class="fa-solid fa-check"></i> Contrôle antipollution inclus</li>
+                            <li><i class="fa-solid fa-times"></i> Diagnostic électronique</li>
+                        </ul>
+                        <a href="#rendezvous" class="btn btn-ccta-secondary w-100">Réserver</a>
+                    </div>
+                </div>
+
+                <!-- Offre Premium (populaire) -->
+                <div class="col-12 col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="pricing-card popular">
+                        <span class="popular-badge"><i class="fa-solid fa-star me-1"></i> Populaire</span>
+                        <div class="pricing-icon"><i class="fa-solid fa-microchip"></i></div>
+                        <h4>Contrôle Premium</h4>
+                        <p class="pricing-sub">Diagnostic complet + électronique</p>
+                        <div class="pricing-price">75€ <small>/ visite</small></div>
+                        <ul class="pricing-features">
+                            <li><i class="fa-solid fa-check"></i> 133 points de contrôle</li>
+                            <li><i class="fa-solid fa-check"></i> Diagnostic électronique complet</li>
+                            <li><i class="fa-solid fa-check"></i> Analyse des calculateurs (ABS/ESP)</li>
+                            <li><i class="fa-solid fa-check"></i> Contrôle antipollution avancé</li>
+                            <li><i class="fa-solid fa-check"></i> Rapport détaillé + conseils</li>
+                        </ul>
+                        <a href="#rendezvous" class="btn btn-ccta-primary w-100">Réserver</a>
+                    </div>
+                </div>
+
+                <!-- Offre Poids Lourds -->
+                <div class="col-12 col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="pricing-card">
+                        <div class="pricing-icon"><i class="fa-solid fa-truck"></i></div>
+                        <h4>Contrôle Poids Lourds</h4>
+                        <p class="pricing-sub">Camions et utilitaires</p>
+                        <div class="pricing-price">95€ <small>/ visite</small></div>
+                        <ul class="pricing-features">
+                            <li><i class="fa-solid fa-check"></i> Inspection spécialisée</li>
+                            <li><i class="fa-solid fa-check"></i> Système de freinage renforcé</li>
+                            <li><i class="fa-solid fa-check"></i> Contrôle des suspentes</li>
+                            <li><i class="fa-solid fa-check"></i> Rapport de conformité</li>
+                            <li><i class="fa-solid fa-check"></i> Contrôle antipollution</li>
+                        </ul>
+                        <a href="#rendezvous" class="btn btn-ccta-secondary w-100">Réserver</a>
+                    </div>
+                </div>
+
+                <!-- Offre Deux-Roues -->
+                <div class="col-12 col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="pricing-card">
+                        <div class="pricing-icon"><i class="fa-solid fa-motorcycle"></i></div>
+                        <h4>Contrôle Deux-Roues</h4>
+                        <p class="pricing-sub">Motos, scooters, trikes</p>
+                        <div class="pricing-price">35€ <small>/ visite</small></div>
+                        <ul class="pricing-features">
+                            <li><i class="fa-solid fa-check"></i> 80 points de contrôle</li>
+                            <li><i class="fa-solid fa-check"></i> Freinage et direction</li>
+                            <li><i class="fa-solid fa-check"></i> Éclairage et signalisation</li>
+                            <li><i class="fa-solid fa-check"></i> Niveau sonore</li>
+                            <li><i class="fa-solid fa-check"></i> Rapport immédiat</li>
+                        </ul>
+                        <a href="#rendezvous" class="btn btn-ccta-secondary w-100">Réserver</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section id="temoignages" class="section-padding section-bg-light">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <span class="section-badge">Avis Clients</span>
+                <h2>Ce que disent <span class="highlight-text">Nos Clients</span></h2>
+                <p class="subtitle">Des milliers de conducteurs nous font confiance pour la sécurité de leur véhicule.</p>
+                <span class="title-line"></span>
+            </div>
+            <div class="global-rating" data-aos="fade-up" data-aos-delay="100">
+                <div class="global-rating-stars">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+                </div>
+                <span class="global-rating-score">4.8</span>
+                <span class="global-rating-text">sur 5 - Basé sur 1 248 avis</span>
+                <div class="global-rating-badge"><i class="fa-solid fa-circle-check"></i> Clients satisfaits</div>
+            </div>
+
+            <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="200">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="testimonial-card">
+                            <div class="testimonial-header">
+                                <div class="testimonial-avatar"><img src="/home/divin/CCTA/images/552676407_122271216524034821_6934299949075729428_n.jpg" alt="Jean" /></div>
+                                <div class="testimonial-user"><h5>Jean Dupont</h5><span class="testimonial-vehicle">Toyota RAV4 - 2022</span></div>
+                                <div class="testimonial-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                            </div>
+                            <div class="testimonial-body"><p>Une équipe très professionnelle et accueillante. Le contrôle a été réalisé rapidement et avec une grande précision. Je recommande vivement ce centre !</p></div>
+                            <div class="testimonial-footer"><span class="testimonial-date"><i class="fa-regular fa-calendar me-1"></i>15 juil. 2026</span><span class="testimonial-verified"><i class="fa-solid fa-circle-check"></i> Vérifié</span></div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="testimonial-card">
+                            <div class="testimonial-header">
+                                <div class="testimonial-avatar"><img src="/home/divin/CCTA/images/552676407_122271216524034821_6934299949075729428_n.jpg" alt="Marie" /></div>
+                                <div class="testimonial-user"><h5>Marie Lambert</h5><span class="testimonial-vehicle">Peugeot 208 - 2023</span></div>
+                                <div class="testimonial-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                            </div>
+                            <div class="testimonial-body"><p>Service impeccable ! La prise de rendez-vous en ligne est facile et le contrôle a été effectué dans les délais. Les techniciens sont compétents.</p></div>
+                            <div class="testimonial-footer"><span class="testimonial-date"><i class="fa-regular fa-calendar me-1"></i>10 juil. 2026</span><span class="testimonial-verified"><i class="fa-solid fa-circle-check"></i> Vérifié</span></div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="testimonial-card">
+                            <div class="testimonial-header">
+                                <div class="testimonial-avatar"><img src="/home/divin/CCTA/images/552676407_122271216524034821_6934299949075729428_n.jpg" alt="Pierre" /></div>
+                                <div class="testimonial-user"><h5>Pierre Martin</h5><span class="testimonial-vehicle">Mercedes Sprinter - 2021</span></div>
+                                <div class="testimonial-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                            </div>
+                            <div class="testimonial-body"><p>En tant que professionnel, j'apprécie la qualité du service pour les poids lourds. L'équipe connaît parfaitement les spécificités des utilitaires. Excellent !</p></div>
+                            <div class="testimonial-footer"><span class="testimonial-date"><i class="fa-regular fa-calendar me-1"></i>5 juil. 2026</span><span class="testimonial-verified"><i class="fa-solid fa-circle-check"></i> Vérifié</span></div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="testimonial-card">
+                            <div class="testimonial-header">
+                                <div class="testimonial-avatar"><img src="/home/divin/CCTA/images/552676407_122271216524034821_6934299949075729428_n.jpg" alt="Sophie" /></div>
+                                <div class="testimonial-user"><h5>Sophie Bernard</h5><span class="testimonial-vehicle">Tesla Model 3 - 2024</span></div>
+                                <div class="testimonial-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i></div>
+                            </div>
+                            <div class="testimonial-body"><p>Très satisfaite du contrôle de ma Tesla. Les experts sont à jour sur les technologies électriques. L'accueil est chaleureux et les explications claires.</p></div>
+                            <div class="testimonial-footer"><span class="testimonial-date"><i class="fa-regular fa-calendar me-1"></i>28 juin 2026</span><span class="testimonial-verified"><i class="fa-solid fa-circle-check"></i> Vérifié</span></div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="testimonial-card">
+                            <div class="testimonial-header">
+                                <div class="testimonial-avatar"><img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=100&q=80" alt="Thomas" /></div>
+                                <div class="testimonial-user"><h5>Thomas Dubois</h5><span class="testimonial-vehicle">BMW Série 3 - 2020</span></div>
+                                <div class="testimonial-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                            </div>
+                            <div class="testimonial-body"><p>Un grand merci à toute l'équipe ! Le diagnostic électronique a été très précis et m'a permis d'identifier un problème sur mon ABS. Service de qualité.</p></div>
+                            <div class="testimonial-footer"><span class="testimonial-date"><i class="fa-regular fa-calendar me-1"></i>20 juin 2026</span><span class="testimonial-verified"><i class="fa-solid fa-circle-check"></i> Vérifié</span></div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="testimonial-card">
+                            <div class="testimonial-header">
+                                <div class="testimonial-avatar"><img src="/home/divin/CCTA/images/552676407_122271216524034821_6934299949075729428_n.jpg" alt="Isabelle" /></div>
+                                <div class="testimonial-user"><h5>Isabelle Moreau</h5><span class="testimonial-vehicle">Renault Clio - 2023</span></div>
+                                <div class="testimonial-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                            </div>
+                            <div class="testimonial-body"><p>Première expérience avec le CCTA et je suis ravie ! L'accueil est sympathique et le contrôle a été effectué en moins d'une heure. Parfait !</p></div>
+                            <div class="testimonial-footer"><span class="testimonial-date"><i class="fa-regular fa-calendar me-1"></i>15 juin 2026</span><span class="testimonial-verified"><i class="fa-solid fa-circle-check"></i> Vérifié</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section id="galerie" class="section-padding section-bg-white">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>Galerie de nos Infrastructures</h2>
+                <p class="subtitle">Découvrez nos ateliers modernes et nos équipements d'inspection de pointe.</p>
+                <span class="title-line"></span>
+            </div>
+            <div class="row g-3">
+                <div class="col-6 col-md-4" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="gallery-item">
+                        <img src="/home/divin/CCTA/images/20260728_141057.jpg" alt="Atelier" loading="lazy" />
+                        <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="gallery-item">
+                        <img src="/home/divin/CCTA/images/20260728_141120.jpg" alt="Ligne d'inspection" loading="lazy" />
+                        <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1517524008697-84bbe3c3fd98?auto=format&fit=crop&w=600&q=80" alt="Diagnostic" loading="lazy" />
+                        <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="gallery-item">
+                        <img src="/home/divin/CCTA/images/20260728_141013.jpg" alt="Infrastructures" loading="lazy" />
+                        <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="gallery-item">
+                        <img src="/home/divin/CCTA/images/20260728_141057.jpg" alt="Banc de test" loading="lazy" />
+                        <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="gallery-item">
+                        <img src="/home/divin/CCTA/images/20260728_141120.jpg" alt="Contrôleurs" loading="lazy" />
+                        <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section-padding section-bg-light">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>Contact & Localisation</h2>
+                <p class="subtitle">Une question ? Notre équipe dynamique reste à votre entière disposition.</p>
+                <span class="title-line"></span>
+            </div>
+            <div class="row g-4">
+                <div class="col-12 col-lg-5" data-aos="fade-right">
+                    <div class="contact-info-card">
+                        <h5 class="mb-4" style="color: var(--accent-color);">Informations Utiles</h5>
+                        <div class="info-item">
+                            <div class="info-icon"><i class="fa-solid fa-location-dot"></i></div>
+                            <div>
+                                <h6>Adresse Principale</h6>
+                                <p>Avenue Ougunda N°09 Quartier BG, Commune de Ngaliema, Kinshasa, RDC</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-icon"><i class="fa-solid fa-building"></i></div>
+                            <div>
+                                <h6>RCCM</h6>
+                                <p>CD/KNG/RCCM/21-B-00292</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-icon"><i class="fa-solid fa-id-card"></i></div>
+                            <div>
+                                <h6>Id Nat</h6>
+                                <p>01-C3001-N4969A</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-icon"><i class="fa-solid fa-receipt"></i></div>
+                            <div>
+                                <h6>N° Impôt</h6>
+                                <p>A21159683X</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-icon"><i class="fa-solid fa-phone"></i></div>
+                            <div>
+                                <h6>Téléphone</h6>
+                                <p>+243 899 817 400 / +243 812 472 709</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-icon"><i class="fa-brands fa-whatsapp"></i></div>
+                            <div>
+                                <h6>WhatsApp</h6>
+                                <p>+243 818 200 965</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-icon"><i class="fa-solid fa-envelope"></i></div>
+                            <div>
+                                <h6>Courriel</h6>
+                                <p>autologisticsinternational@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-icon"><i class="fa-solid fa-clock"></i></div>
+                            <div>
+                                <h6>Horaires</h6>
+                                <p>Lundi - Samedi : 07h30 - 17h00</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-7" data-aos="fade-left">
+                    <div class="rounded-4 overflow-hidden shadow-sm h-100" style="min-height: 350px; border: 2px solid var(--border-color);">
+                        <!-- Google Maps avec coordonnées précises (Kinshasa, RDC) -->
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1995.597!2d15.2970!3d-4.3250!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1a6a313000000000%3A0x1!2zS2luc2hhc2E!5e0!3m2!1sfr!2scd!4v1600000000000" 
+                            width="100%" 
+                            height="100%" 
+                            style="border:0; min-height:350px;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row g-4 mb-4">
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="navbar-brand mb-3" style="font-size: 1.3rem; color: var(--text-light) !important;">
+                        <i class="fa-solid fa-car-tunnel"></i> <span>CCTA</span>
+                    </div>
+                    <p class="text-white-50" style="font-size: 0.82rem; max-width: 350px;">Le Centre de Contrôle Technique des Automobiles (CCTA) est une institution dédiée à l'inspection réglementaire, la sécurité routière et la conformité environnementale.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3 col-lg-2 footer-widget">
+                    <h5>Navigation</h5>
+                    <ul class="footer-links">
+                        <li><a href="#accueil">Accueil</a></li>
+                        <li><a href="#apropos">À Propos</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#equipe">Équipe</a></li>
+                        <li><a href="#temoignages">Avis</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-md-3 col-lg-3 footer-widget">
+                    <h5>Nos Services</h5>
+                    <ul class="footer-links">
+                        <li><a href="#services">Contrôle Légers</a></li>
+                        <li><a href="#services">Contrôle Deux-Roues</a></li>
+                        <li><a href="#services">Inspection Poids Lourds</a></li>
+                        <li><a href="#services">Visite Pré-Achat</a></li>
+                        <li><a href="#services">Test Antipollution</a></li>
+                    </ul>
+                </div>
+                <div class="col-12 col-md-12 col-lg-3 footer-widget">
+                    <h5>Documents Officiels</h5>
+                    <ul class="footer-links">
+                        <li><a href="#" onclick="alert('Téléchargement de la Brochure PDF...'); return false;"><i class="fa-solid fa-file-pdf text-danger me-2"></i>Brochure</a></li>
+                        <li><a href="#" onclick="alert('Téléchargement du Certificat...'); return false;"><i class="fa-solid fa-file-pdf text-danger me-2"></i>Certificat PV</a></li>
+                        <li><a href="#" onclick="alert('Téléchargement de la Charte...'); return false;"><i class="fa-solid fa-file-pdf text-danger me-2"></i>Charte Qualité</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row pt-3 border-top border-secondary text-center text-md-start">
+                <div class="col-12 col-md-6"><p class="text-white-50 small mb-0">&copy; 2026 CCTA. Tous droits réservés.</p></div>
+                <div class="col-12 col-md-6 text-md-end"><p class="text-white-50 small mb-0">Site conçu par Divin Ntwali.dev</p></div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js">
+    </script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js">
+    </script>
+    <script>
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            const progressBar = document.getElementById('preloaderProgress');
+            let progress = 0;
+            const interval = setInterval(() => {
+                progress += Math.random() * 15 + 5;
+                if (progress >= 100) { progress = 100;
+                    clearInterval(interval);
+                    setTimeout(() => preloader.classList.add('hidden'), 500); }
+                progressBar.style.width = progress + '%';
+            }, 200);
+            setTimeout(() => {
+                AOS.init({ duration: 600, once: true, easing: 'ease-out-cubic' });
+            }, 300);
+            initCounters();
+            initSwiper();
+            initTestimonialsSwiper();
+        });
+
+        function initSwiper() {
+            new Swiper('.hero-slider', {
+                loop: true,
+                speed: 1000,
+                autoplay: { delay: 4000, disableOnInteraction: false },
+                effect: 'fade',
+                fadeEffect: { crossFade: true },
+                navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+                pagination: { el: '.swiper-pagination', clickable: true }
+            });
+        }
+
+        function initTestimonialsSwiper() {
+            new Swiper('.testimonials-slider', {
+                loop: true,
+                slidesPerView: 1,
+                spaceBetween: 24,
+                autoplay: { delay: 5000, disableOnInteraction: false, pauseOnMouseEnter: true },
+                speed: 800,
+                navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+                pagination: { el: '.swiper-pagination', clickable: true, dynamicBullets: true },
+                breakpoints: { 640: { slidesPerView: 1 }, 768: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }
+            });
+        }
+
+        function initCounters() {
+            document.querySelectorAll('.hero-stats .stat-number').forEach(counter => {
+                const target = +counter.getAttribute('data-target');
+                let count = 0,
+                    speed = Math.max(1, target / 40);
+                const update = () => {
+                    count += speed;
+                    if (count < target) { counter.innerText = '+' + Math.floor(count);
+                        requestAnimationFrame(update); } else counter.innerText = '+' + target;
+                };
+                update();
+            });
+        }
+
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            document.getElementById('progressBar').style.width = (scrollTop / docHeight) * 100 + '%';
+            document.getElementById('mainNav').classList.toggle('scrolled', scrollTop > 50);
+            document.getElementById('backToTop').classList.toggle('show', scrollTop > 300);
+        });
+
+        document.getElementById('backToTop').addEventListener('click', () => window.scrollTo({ top: 0,
+            behavior: 'smooth' }));
+
+        const themeToggle = document.getElementById('themeToggle');
+        const theme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', theme);
+        themeToggle.addEventListener('click', () => {
+            const newTheme = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        });
+
+        // Active nav link on scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) { e.preventDefault();
+                    window.scrollTo({ top: target.offsetTop - 70, behavior: 'smooth' }); }
+            });
+        });
+        window.addEventListener('scroll', () => {
+            let current = '';
+            document.querySelectorAll('section[id]').forEach(s => {
+                if (window.scrollY >= s.offsetTop - 120) current = s.getAttribute('id');
+            });
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+            });
+        });
+    </script>
+</body>
+</html>
